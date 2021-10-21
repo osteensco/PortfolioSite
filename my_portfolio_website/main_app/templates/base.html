@@ -9,15 +9,31 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- additional stylesheets can be added here -->
+ 
 
-    <title>{% block title %}Scott Osteen's Portfolio{% endblock %}</title>
+
+
+    <title>{% block title %} Scott Osteen's Portfolio {% endblock %}</title>
 </head>
 
 <body>
-    <div id="content", name="content">
-        {% block content %}
+    
+    <div id="headcontent", name="headcontent">
+        {% block header_content %}
         {% endblock %}
     </div>
+
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <span class= "navbar-brand">
+            {% block page_name %} Scott Osteen's Portfolio {% endblock %}
+        </span>
+    </nav>
+
+    <div id="pagecontent", name="pagecontent">
+        {% block page_content %}
+        {% endblock %}
+    </div>
+
 
 <!-- javascript from bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
