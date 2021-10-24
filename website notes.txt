@@ -1,16 +1,25 @@
 1. TO START A NEW PROJECT initialize a django project
--in directiory I want to work in run cmd and type: django-admin startproject my_portfolio_website
-	-my_portfolio_website is the name of the subsequent folders that will be created
 
-2. run server within project
--in my_portfolio_website directory, run cmd and type: python manage.py runserver
-	-to stop, in console hit "CTRL+C"
+	-in directiory I want to work in run cmd and type: django-admin startproject my_portfolio_website
+		-my_portfolio_website is the name of the subsequent folders that will be created
 
-3. after updating settings, run migration
 
--in my_portfolio_website directory, run cmd and type:
-	-python manage.py make migrations [name of app] (this is staging changes, similar to git)
-	-python manage.py migrate (essentially a commit command)
+2. Create new APP in project
+
+	-in project directory run cmd and type: python manage.py startapp [name of new app]
+		-add app name to INSTALLED_APPS list in settings.py
+
+3. run server within project
+
+	-in project directory, run cmd and type: python manage.py runserver
+		-to stop, in console hit "CTRL+C"
+
+
+4. after updating settings, run migration
+
+	-in my_portfolio_website directory, run cmd and type:
+		-python manage.py make migrations [name of app] (this is staging changes, similar to git)
+		-python manage.py migrate (essentially a commit command)
 
 
 
