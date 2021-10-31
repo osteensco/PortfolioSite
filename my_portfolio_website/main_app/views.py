@@ -9,25 +9,13 @@ def home(response):
     return render(response, 'home.html', {'title': title, 'projects': projects, 'techs': techs})#dictionary is used for passing things to html code
 
 
-def proj_list(response):
-    projects = Project.objects.order_by('relevance')
-    title = "All Projects"
-    return render(response, 'projects.html', {'title': title, 'projects': projects})
-
-
-def tech_list(response):
-    techs = Technology.objects.order_by('relevance')
-    title = "Technologies"
-    return render(response, 'techs.html', {'title': title, 'techs': techs})
-
-
-def proj_page(response, id):
-    project = Project.objects.get(id=id)
+def proj_page(response, name):
+    project = Project.objects.get(name=name)
     title = project.name
     return render(response, project.html, {'title': title, 'project': project})
 
 
-def tech_page(response, id):
-    tech = Technology.objects.get(id=id)
+def tech_page(response, name):
+    tech = Technology.objects.get(name=name)
     title = tech.name
     return render(response, tech.html, {'title': title, 'tech': tech})
