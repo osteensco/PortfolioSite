@@ -3,14 +3,23 @@ from django.db import models
 # Create your models here.
 class Technology(models.Model):
     name = models.CharField(max_length=100)
+    html = models.CharField(max_length=20)
+    relevance = models.IntegerField()
     icon = models.ImageField()
-    #does each need its own "home" page?
+    #how to populate all projects tagged with a given technology to it's html file?
+    def __str__(self) -> str:
+        return self.name
 
 
 class Project(models.Model):
-    project_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    html = models.CharField(max_length=20)#html file provides the detailed project description
+    relevance = models.IntegerField()
     short_desc = models.CharField(max_length=280)
+    repo = models.CharField(max_length=100)
     technologies = models.ManyToManyField(Technology)
     picture = models.ImageField()
     #technology mix chart like in github? link directly from git repo?
-    #each definitely needs its own "details" page
+    def __str__(self) -> str:
+        return self.name
+

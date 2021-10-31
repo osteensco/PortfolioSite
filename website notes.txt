@@ -15,10 +15,11 @@
 		-to stop, in console hit "CTRL+C"
 
 
-4. after updating settings or adding tables to database run migration:
+4. run migration after updating settings, adding fields to a table, or adding tables in database:
 
 	-in my_portfolio_website directory, run cmd and type:
 		-python manage.py makemigrations [name of app] (this is staging changes, similar to git)
+			-if adding a new field, on first migration include argument null=True otherwise it breaks
 		-python manage.py migrate (essentially a commit command)
 
 
