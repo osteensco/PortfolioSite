@@ -4,7 +4,9 @@ from .models import Technology, Project
 
 def home(response):
     title = '''Scott Osteen's Portfolio'''
-    return render(response, 'home.html', {'title': title})#dictionary is used for passing things to html code
+    projects = Project.objects.order_by('relevance')
+    techs = Technology.objects.order_by('relevance')
+    return render(response, 'home.html', {'title': title, 'projects': projects, 'techs': techs})#dictionary is used for passing things to html code
 
 
 def proj_list(response):
