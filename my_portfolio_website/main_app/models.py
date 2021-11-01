@@ -3,7 +3,6 @@ from django.db import models
 # Create your models here.
 class Technology(models.Model):
     name = models.CharField(max_length=100)
-    html = models.TextField()
     relevance = models.IntegerField()
     icon = models.ImageField()
 
@@ -20,7 +19,7 @@ class Project(models.Model):
     technologies = models.ManyToManyField(Technology)
     picture = models.ImageField()
     #technology mix chart like in github? link directly from git repo?
-    
+
     def __str__(self) -> str:
         return self.name
 
