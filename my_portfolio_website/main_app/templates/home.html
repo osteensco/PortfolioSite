@@ -2,23 +2,6 @@
 {% load static %}
 
 
-{% block nav %}
-    <li class="nav-item">
-        <a class="nav-link" href="#About-Me">About Me </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#Projects">Projects </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#Technologies">Technologies </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#Resume">Resume </a>
-    </li>
-{% endblock %}
-
-
-
 {% block page_content %}
     <div class="container py-5">
         <h2 class="text-center py-5" id="About-Me">About Me</h2>
@@ -54,7 +37,7 @@
                             <img class="card-img-top" src="{% static tech.icon %}">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ tech.name }}</h5>
-                                <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary m-1" style="margin: 0px 60px">
+                                <a href="{% url 'tech_page' tech.id %}" class="btn btn-outline-primary m-1" style="margin: 0px 60px">
                                     Projects using this technology
                                 </a>
                             </div>
