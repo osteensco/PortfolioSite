@@ -14,7 +14,7 @@ def proj_page(response, name):
     project = Project.objects.get(name=name)
     title = project.name
 
-    return render(response, 'baseproj.html', {'title': title, 'project': project})
+    return render(response, project.html, {'title': title, 'project': project})
 
 
 def tech_page(response, id):

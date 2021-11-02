@@ -1,0 +1,27 @@
+{% extends 'baseproj.html' %}
+
+
+{% block proj_readme %}
+
+<h4 class="text-center py-5">Played in a terminal, you can face off against an AI in a game of Tic Tac Toe.</h4>
+
+
+<h6 class="text-left py-2">A bit more human...</h6>
+
+<p class="row py-2">
+In Tic Tac Toe, there are often cases where different moves have the same strength in terms of winnability. To provide a more realistic experience, I added in a random choice of these equal valued moves so that the AI does not always choose the same move to make if there are other equally valid options.
+</p>
+
+<h6 class="text-left py-2">AI</h6>
+
+<p class="row py-2">
+The AI decides it's move using a recursive function that executes a minimax algorithm. I added a difficulty choice that alters the value that the minimax algorithm assigns to each potential move. This is implemented on a scale of 1-3.  At a difficulty of 1, the AI sees all potential moves as equally valid. At a difficulty of 2, it will recognize ties and wins as equally valid but will attempt to avoid a certain loss. At 3 the AI is fully optimized and unbeatable (you can still tie of course).
+</p>
+
+<h6 class="text-left py-2">Scalable</h6>
+
+<p class="row py-2">
+I placed common reusable actions inside of functions so that it would be built in a scalable way. A two player option could easily be implemented or a GUI version could be created by using this as a template.
+</p>
+
+{% endblock %}
