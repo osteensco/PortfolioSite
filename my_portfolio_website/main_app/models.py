@@ -12,7 +12,7 @@ class Technology(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
-    html = models.TextField()#text here will populate in html template, provides the detailed project description
+    html = models.CharField(max_length=50)#text here will populate in html template, provides the detailed project description
     relevance = models.IntegerField()
     short_desc = models.CharField(max_length=280)
     repo = models.CharField(max_length=100)
