@@ -20,6 +20,6 @@ def proj_page(response, name):
 def tech_page(response, id):
     tech = Technology.objects.get(id=id)
     projects = Project.objects.order_by('relevance')
-    title = tech.name
+    title = tech.type
 
     return render(response, 'basetech.html', {'title': title, 'tech': tech, 'projects': projects})

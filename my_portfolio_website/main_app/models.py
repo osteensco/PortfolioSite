@@ -2,12 +2,12 @@ from django.db import models
 
 # Create your models here.
 class Technology(models.Model):
-    name = models.CharField(max_length=100)
+    type = models.CharField(max_length=100)
     relevance = models.IntegerField()
     icon = models.ImageField()
 
     def __str__(self) -> str:
-        return self.name
+        return self.type
 
 
 class Project(models.Model):
