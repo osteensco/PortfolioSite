@@ -2,6 +2,7 @@
 {% load static %}
 
 
+
 {% block page_content %}
     <div class="container py-5">
         <h2 class="text-center py-5" id="About-Me">About Me</h2>
@@ -20,15 +21,21 @@
                             <h5 class="card-title">{{ project.name }}</h5>
                             <p class="card-text">{{ project.short_desc }}</p>
                             <div class="row justify-content-center align-items-center">
-                                <a href="{% url 'proj_page' project.name %}" class="btn btn-outline-primary m-1" style="margin: 0px 60px">
+                                <a href="{% url 'proj_page' project.name %}" class="btn btn-outline-primary m-1" role="button" style="margin: 0px 60px">
                                     Details
                                 </a>
-                                <a href={{project.repo}} target="_blank" class="btn btn-outline-primary m-1" style="margin: 0px 60px">
+                                <a href={{project.repo}} target="_blank" class="btn btn-outline-primary m-1" role="button" style="margin: 0px 60px">
                                     Code
                                 </a>
-                                <a type="button" class="btn btn-outline-primary m-1" data-container="body" data-toggle="popover" data-placement="right" data-content={{project.technologies.all}} data-trigger="hover" style="margin: 0px 60px">
-                                    Tech Used
-                                </a>
+                                {% for key, value in displaytechs.items %}
+                                    {% if project.name == key %}
+                                        <a type="button" class="btn btn-outline-primary m-1"  data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content="{{ value }}" role="button" style="margin: 0px 60px">
+                                            Tech Used
+                                        </a>
+                                    {% else %}
+                                    <!-- continue -->
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

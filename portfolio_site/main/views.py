@@ -7,8 +7,17 @@ def home(response):
     title = '''Scott Osteen's Portfolio'''
     projects = Project.objects.order_by('relevance')
     techs = Technology.objects.order_by('relevance')
+    
+    displaytechs = {}
+    for project in projects:
+        l = [tech.name for tech in project.technologies.all()]
+        l = str(l)[1:-1]
+        d = {f'''{project.name}''': f'''{l.replace("'","")}'''}
+        displaytechs = displaytechs | d
 
-    return render(response, 'home.html', {'title': title, 'projects': projects, 'techs': techs})#dictionary is used for passing things to html code
+    mapping = {'title': title, 'projects': projects, 'techs': techs, 'displaytechs': displaytechs}#dictionary is used for passing things to html code
+
+    return render(response, 'home.html', mapping)
 
 
 def proj_page(response, name):
