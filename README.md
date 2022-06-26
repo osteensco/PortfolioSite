@@ -25,4 +25,4 @@
     The frontend utilizes bootstrap and a CSS stylesheet I wrote myself. Bootstrap is a great template 
     that provides an excellent starting point, but I wanted to add my own additions as I learned more 
     about CSS. One example of my own CSS would be the Navbar at the top of every page. This can be found 
-    in the [base.html file](https://github.com/osteensco/PortfolioSite/blob/master/my_portfolio_website/main_app/templates/base.html).
+    in the base.html file.

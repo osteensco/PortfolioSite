@@ -23,3 +23,14 @@ class Project(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class Resume(models.Model):
+    name = models.CharField(max_length=100, default='ScottOsteenResume')
+    current = models.BooleanField(default=True)
+    pdf = models.FileField(upload_to='static/')
+
+    def __str__(self) -> str:
+        return self.name
+
+        

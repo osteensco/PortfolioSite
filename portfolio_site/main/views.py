@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Technology, Project
+from .models import Technology, Project, Resume
 
 
 
@@ -7,6 +7,7 @@ def home(response):
     title = '''Scott Osteen's Portfolio'''
     projects = Project.objects.order_by('relevance')
     techs = Technology.objects.order_by('relevance')
+    resume = Resume.objects.get(current=True)
     
     displaytechs = {}
     for project in projects:
@@ -15,7 +16,13 @@ def home(response):
         d = {f'''{project.name}''': f'''{l.replace("'","")}'''}
         displaytechs = displaytechs | d
 
-    mapping = {'title': title, 'projects': projects, 'techs': techs, 'displaytechs': displaytechs}#dictionary is used for passing things to html code
+    mapping = {
+        'title': title,
+        'projects': projects,
+        'techs': techs,
+        'resume': resume,
+        'displaytechs': displaytechs
+        }#dictionary is used for passing things to html code
 
     return render(response, 'home.html', mapping)
 
