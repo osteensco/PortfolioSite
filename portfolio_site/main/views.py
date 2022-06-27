@@ -2,16 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Technology, Project, Resume
 
+#more akin to request handlers, these functions provide a response from a request. depends upon hit in urls list.
 
-
-def home(response):
+def home(response):#provides home page, extended from base. includes all projects and technologies
     title = '''Scott Osteen's Portfolio'''
     projects = Project.objects.order_by('relevance')
     techs = Technology.objects.order_by('relevance')
     resume = Resume.objects.get(current=True)
     
     displaytechs = {}
-    for project in projects:
+    for project in projects:#manifest list of technologies used for each project
         l = [tech.name for tech in project.technologies.all()]
         l = str(l)[1:-1]
         d = {f'''{project.name}''': f'''{l.replace("'","")}'''}
@@ -28,14 +28,14 @@ def home(response):
     return render(response, 'home.html', mapping)
 
 
-def proj_page(response, name):
+def proj_page(response, name):#queries db for project name and returns appropriate project html file
     project = Project.objects.get(name=name)
     title = project.name
 
     return render(response, project.html, {'title': title, 'project': project})
 
 
-def tech_page(response, id):
+def tech_page(response, id):#each tech page is extended from basetech.html
     tech = Technology.objects.get(id=id)
     projects = Project.objects.order_by('relevance')
     title = tech.name
