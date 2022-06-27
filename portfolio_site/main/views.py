@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Technology, Project, Resume
 
 
@@ -40,3 +41,6 @@ def tech_page(response, id):
     title = tech.name
 
     return render(response, 'basetech.html', {'title': title, 'tech': tech, 'projects': projects})
+
+def bypass(response):
+    return HttpResponse(response)
