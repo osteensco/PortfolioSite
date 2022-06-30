@@ -21,3 +21,5 @@
 		-python manage.py makemigrations [name of app] (this is staging changes, similar to git)
 			-if adding a new field, on first migration include argument null=True otherwise it breaks
 		-python manage.py migrate (essentially a commit command)
+
+5. images must be moved to static file otherwise they disappear eventually.
