@@ -1,7 +1,6 @@
-/my_portfolio_website/main_app/__pycache__
+/main/__pychache__
+/main/migrations/__pycache__
 /venv
-/portfolio_site/main/__pycache__
-/portfolio_site/main/migrations/__pycache__
-/portfolio_site/portfolio_site/__pycache__
-/portfolio_site/db.sqlite3
-portfolio_site/portfolio_site/__pycache__/settings.cpython-39.pyc
+/portfolio_site/__pycache__
+/db.sqlite3
+
