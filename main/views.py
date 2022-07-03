@@ -38,8 +38,8 @@ def proj_page(response, name):#queries db for project name and returns appropria
     return render(response, project.html, {'title': title, 'project': project})
 
 
-def tech_page(response, id):#each tech page is extended from basetech.html
-    tech = Technology.objects.get(id=id)
+def tech_page(response, name):#each tech page is extended from basetech.html
+    tech = Technology.objects.get(name=name)
     projects = Project.objects.order_by('relevance')
     title = tech.name
 

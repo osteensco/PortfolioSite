@@ -52,7 +52,7 @@
                             <img class="card-img-top" src="{% static tech.icon %}">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ tech.type }}</h5>
-                                <a href="{% url 'tech_page' tech.id %}" class="btn btn-outline-primary m-1" style="margin: 0px 60px">
+                                <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary m-1" style="margin: 0px 60px">
                                     Projects using this technology
                                 </a>
                             </div>
