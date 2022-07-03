@@ -17,16 +17,19 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ay%d6#yy7#&9cvb82bl+z_a+(*a7t03sp!wmts7(f*e5ps_tc-'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = os.environ.get('DJANGO_DEBUG_VALUE')
+
+
+
+
+ALLOWED_HOSTS = [
+    'osteensco-portfolio-site.herokuapp.com',
+    'scottosteen.com'
+]
 
 
 # Application definition
