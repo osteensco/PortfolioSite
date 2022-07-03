@@ -8,7 +8,10 @@ def home(response):#provides home page, extended from base. includes all project
     title = '''Scott Osteen's Portfolio'''
     projects = Project.objects.order_by('relevance')
     techs = Technology.objects.order_by('relevance')
-    resume = Resume.objects.get(current=True)
+    try:
+        resume = Resume.objects.get(current=True)
+    except Resume.DoesNotExist:
+        resume = None
     
     displaytechs = {}
     for project in projects:#manifest list of technologies used for each project
