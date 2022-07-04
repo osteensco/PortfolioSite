@@ -13,9 +13,4 @@ urlpatterns = [
     path("projects/<str:name>/", views.proj_page, name="proj_page"),
 ]
 
-if settings.DEBUG:
-     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-#https://stackoverflow.com/questions/56886558/page-is-not-found-while-downloading-the-file-in-django
-# if settings.DEBUG:
-#      urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
