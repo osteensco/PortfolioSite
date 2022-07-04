@@ -5,7 +5,7 @@ from django.db import models
 class Technology(models.Model):
     name = models.CharField(max_length=100)
     relevance = models.IntegerField()
-    icon = models.ImageField()
+    icon = models.ImageField(upload_to="images/")
 
     def __str__(self) -> str:
         return self.name
@@ -18,7 +18,7 @@ class Project(models.Model):
     short_desc = models.CharField(max_length=280)
     repo = models.CharField(max_length=100)
     technologies = models.ManyToManyField(Technology)
-    icon = models.ImageField()
+    icon = models.ImageField(upload_to="images/")
     #technology mix chart like in github? link directly from git repo?
 
     def __str__(self) -> str:
@@ -28,7 +28,7 @@ class Project(models.Model):
 class Resume(models.Model):
     name = models.CharField(max_length=100, default='ScottOsteenResume')
     current = models.BooleanField(default=True)
-    pdf = models.FileField()
+    pdf = models.FileField(upload_to="resume/")
 
     def __str__(self) -> str:
         return self.name

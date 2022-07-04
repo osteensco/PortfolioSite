@@ -10,7 +10,7 @@
 <div class="contaner pb-5">
     <div class="row">
         <div class="col text-center">
-            <img class="img-fluid" height="200" width="200" src="{% static tech.icon %}" alt="Logo">
+            <img class="img-fluid" height="200" width="200" src="{{ static tech.icon.url }}" alt="Logo">
         </div>
     </div>
 </div>
@@ -20,7 +20,7 @@
             {% if tech in project.technologies.all %}
             <div class="col-sm-12 col-lg-4 mb-4">
                 <div class="card text-center bg-transparent text-white mb-3">
-                    <img class="card-img-top h-25" src="{% static project.icon %}">
+                    <img class="card-img-top h-25" src="{{ project.icon.url }}">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ project.name }}</h5>
                         <p class="card-text">{{ project.short_desc }}</p>
