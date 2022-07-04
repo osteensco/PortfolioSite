@@ -30,11 +30,12 @@ else:
     DEBUG = True
 
 
-
+WHITENOISE_AUTOREFRESH = True
 
 ALLOWED_HOSTS = [
     'osteensco-portfolio-site.herokuapp.com',
-    'scottosteen.com'
+    'scottosteen.com',
+    '127.0.0.1'
 ]
 
 
@@ -81,8 +82,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'portfolio_site.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -92,8 +91,6 @@ DATABASES = {
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -136,8 +133,8 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
