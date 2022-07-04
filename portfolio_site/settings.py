@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
-
+import subprocess
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 if os.environ.get('DJANGO_DEBUG_VALUE') == 'False':
     DEBUG = False
 else:
-    DEBUG = False
+    DEBUG = True
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
@@ -90,6 +91,12 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+cmd = "heroku config:get DATABASE_URL" #heroku cli has to be configured for your project, otherwise need to add -a [app name]
+
+heroku_db = subprocess.getoutput(cmd)
+
+DATABASES['default'] = dj_database_url.config(default=heroku_db, conn_max_age=600, ssl_require=True) #sets default connection to heroku DB automatically without env variables
 
 
 
