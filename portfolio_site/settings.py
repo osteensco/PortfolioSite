@@ -27,15 +27,16 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 if os.environ.get('DJANGO_DEBUG_VALUE') == 'False':
     DEBUG = False
 else:
-    DEBUG = True
+    DEBUG = False
 
-
-WHITENOISE_AUTOREFRESH = True
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = [
     'osteensco-portfolio-site.herokuapp.com',
     'scottosteen.com',
-    '127.0.0.1'
+    'www.scottosteen.com',
+    '127.0.0.1.',
+    '*'
 ]
 
 
@@ -121,8 +122,8 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-WHITENOISE_MANIFEST_STRICT = False
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
