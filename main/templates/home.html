@@ -36,8 +36,21 @@
                                     Code
                                 </a>
                                 {% for key, value in displaytechs.items %}
-                                    {% if project.name == key %}
-                                        <a type="button" class="btn btn-outline-primary m-1"  data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content="{{ value }}" role="button" style="margin: 0px 60px">
+                                    {% if project.name == key %}  
+                                        <a type="button" 
+                                        class="btn btn-outline-primary m-1"  
+                                        data-bs-container="body" 
+                                        data-bs-toggle="popover" 
+                                        data-bs-placement="bottom" 
+                                        data-bs-trigger="click hover focus" 
+                                        data-bs-html="true"
+                                        data-bs-content="
+                                        {% for tech in value %}
+                                        |<a href='{% url 'tech_page' tech.name %}'> {{ tech.name }} </a>|
+                                        {% endfor %}
+                                        " 
+                                        role="button" 
+                                        style="margin: 0px 60px">
                                             Tech Used
                                         </a>
                                     {% else %}
@@ -72,7 +85,7 @@
     <div class="container py-5">
         <h2 class="text-center py-5" id="Resume">Resume</h2>
         <div class="text-center">
-            <a href="{{ resume.pdf.url }}"  class="text-center py-5" download>Download</a>
+            <a href="{{ resume.pdf.url }}"  class="text-center py-5" target="_blank" download>Download</a>
         </div>
         <div class="text-center">
             <iframe width="850" height="1300" scrolling="auto" frameborder="no"
