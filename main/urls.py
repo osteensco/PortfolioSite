@@ -3,6 +3,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 #request will hit every list item until first argument matches the GET request
 
 urlpatterns = [
@@ -13,5 +14,6 @@ urlpatterns = [
     path("projects/<str:name>/", views.proj_page, name="proj_page"),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.STATIC_URL, docuemnt_root=settings.STATIC_ROOT)
+#     urlpatterns += static(settings.MEDIA_URL, docuemnt_root=settings.MEDIA_ROOT)

@@ -10,11 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path
+
 import os
 import django_heroku
 import subprocess
 import dj_database_url
+from pathlib import Path
+
+
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -50,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +65,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'portfolio_site.urls'
@@ -128,22 +132,40 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = [
-   os.path.join(BASE_DIR, "static"),
-   ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+
+
+
+
+
+
+AWS_ACCESS_KEY_ID = os.environ.get('DJAWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('DJAWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('DJAWS_STORAGE_BUCKET_NAME')
+AWS_S3_CUSTOM_DOMAIN = f'''{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'''
+
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+AWS_QUERYSTRING_AUTH = False
+AWS_HEADERS = {'Access-Control-Allow-Origin': '*'}
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+
+STATIC_URL = f'''https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'''
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+
 
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-django_heroku.settings(locals())
+django_heroku.settings(locals(), staticfiles=False)
