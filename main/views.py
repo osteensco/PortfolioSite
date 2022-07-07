@@ -17,8 +17,6 @@ def home(response):#provides home page, extended from base. includes all project
     for project in projects:#manifest list of technologies used for each project
         l = [tech for tech in project.technologies.all()]
         d = {f'''{project.name}''': l}
-        # l = str(l)[1:-1]
-        # d = {f'''{project.name}''': f'''{l.replace("'","")}'''}
         displaytechs = displaytechs | d
 
     mapping = {

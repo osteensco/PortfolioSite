@@ -34,7 +34,7 @@ if os.environ.get('DJANGO_DEBUG_VALUE') == 'False':
 else:
     DEBUG = True
 
-DEBUG_PROPAGATE_EXCEPTIONS = True
+# DEBUG_PROPAGATE_EXCEPTIONS = True #use for reading error messages if DEBUG = False
 
 ALLOWED_HOSTS = [
     'osteensco-portfolio-site.herokuapp.com',

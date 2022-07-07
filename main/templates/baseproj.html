@@ -29,9 +29,11 @@
             {% for tech in project.technologies.all %}
                 <div class="col-sm-12 col-lg-4 mb-4">
                     <div class="card text-center bg-transparent text-white mb-3">
-                        <img class="card-img-top" src="{{ tech.icon.url }}">
+                        <a href="{% url 'tech_page' tech.name %}">
+                            <img class="card-img-top" src="{{ tech.icon.url }}">
+                        </a>
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title"><a href="{% url 'tech_page' tech.name %}">{{ tech.name }}</a></h5>
+                            <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary">{{ tech.name }}</a>
                         </div>
                     </div>
                 </div>
