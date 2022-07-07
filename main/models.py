@@ -2,6 +2,8 @@ from django.db import models
 
 
 
+#######ADD MODELS TO ADMIN.PY AFTER MIGRATION###############
+
 class TechType(models.Model):
     name = models.CharField(max_length=100)
 
@@ -41,3 +43,5 @@ class Resume(models.Model):
     def __str__(self) -> str:
         return self.name
 
+
+#######ADD MODELS TO ADMIN.PY AFTER MIGRATION###############
