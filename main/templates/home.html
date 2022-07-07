@@ -4,7 +4,7 @@
 
 
 {% block page_content %}
-    <div class="container py-5">
+    <div class="container-md py-5">
         <h2 class="text-center py-5" id="About-Me">About Me</h2>
         <p>
             I am a self taught programmer with a background in Supply Chain Management, Logistics and Transportation.
@@ -18,7 +18,7 @@
             Feel free to reach out with any questions, comments, or feedback using the links in the top right.
         </p>
     </div>
-    <div class="container py-5">
+    <div class="container-md py-5">
     <h2 class="text-center py-5" id="Projects">Projects</h2>
         <div class="row">
             {% for project in projects %}
@@ -67,7 +67,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="container py-5">
+    <div class="container-md py-5">
         <h2 class="text-center py-5" id="Technologies">Technologies</h2>
             <div class="row">
                 {% for tech in techs %}
@@ -82,7 +82,7 @@
                                     {{ tech.name }}
                                     </a>
                                     <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary">
-                                        Projects using this technology
+                                        Projects using this {% if tech.type %} {{ tech.type }} {% else %} Technology {% endif %}
                                     </a>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                 {% endfor %}
             </div>
         </div>
-    <div class="container py-5">
+    <div class="container-md py-5">
         <h2 class="text-center py-5" id="Resume">Resume</h2>
         <div class="text-center">
             <a href="{{ resume.pdf.url }}"  class="text-center py-5" target="_blank" download>Download</a>
