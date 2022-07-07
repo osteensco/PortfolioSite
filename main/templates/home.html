@@ -9,17 +9,18 @@
         <p>
             I am a self taught programmer with a background in Supply Chain Management, Logistics and Transportation.
             I have a passion for data, analytics and software development. I love creating and learning new things.
-            Data is more accessible and plentiful than ever before in human history, the opportunities for leveraging 
-            data as a major resource are almost endless which I find incredibly exciting and fascinating.
-            My goal is to transition into a data role such as Data Engineer, Analytics Engineer, or Data Scientist 
-            where I can better utilize my software development skills. I enjoy working on projects that allow me to 
-            flex my creativity as well as grow my professional skillset.
+            Today, data is now more accessible and plentiful than ever before, the opportunities for leveraging 
+            data as a major resource are almost endless. I find this fact incredibly exciting and fascinating, and
+            my goal is to transition into a data role such as Analytics Engineer, Data Engineer, or Data Scientist 
+            where I can better utilize my software development skills in a data context. My favorite projects to work on
+            are the ones that allow me to flex my creativity as well as grow my professional skillset.
             
             Feel free to reach out with any questions, comments, or feedback using the links in the top right.
         </p>
     </div>
+    <div class="divider" id="Projects"></div>
     <div class="container-md py-5">
-    <h2 class="text-center py-5" id="Projects">Projects</h2>
+    <h2 class="text-center py-5">Projects</h2>
         <div class="row">
             {% for project in projects %}
                 <div class="col-sm-12 col-lg-4 mb-4">
@@ -67,38 +68,46 @@
             {% endfor %}
         </div>
     </div>
+    <div class="divider" id="Technologies"></div>
     <div class="container-md py-5">
-        <h2 class="text-center py-5" id="Technologies">Technologies</h2>
-            <div class="row">
-                {% for tech in techs %}
-                    <div class="col-sm-12 col-lg-4 mb-4">
-                        <div class="card text-center bg-transparent text-white mb-3">
-                            <a href="{% url 'tech_page' tech.name %}">
-                                <img class="card-img-top" src="{{ tech.icon.url }}">
-                            </a>
-                            <div class="row justify-content-evenly align-items-center">
-                                <div class="btn-group-vertical">
-                                    <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary active">
-                                    {{ tech.name }}
-                                    </a>
-                                    <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary">
-                                        Projects using this {% if tech.type %} {{ tech.type }} {% else %} Technology {% endif %}
-                                    </a>
-                                </div>
+        <h2 class="text-center py-5">Technologies</h2>
+        <div class="row">
+            {% for tech in techs %}
+                <div class="col-sm-12 col-lg-4 mb-4">
+                    <div class="card text-center bg-transparent text-white mb-3">
+                        <a href="{% url 'tech_page' tech.name %}">
+                            <img class="card-img-top" src="{{ tech.icon.url }}">
+                        </a>
+                        <div class="row justify-content-evenly align-items-center">
+                            <div class="btn-group-vertical">
+                                <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary active">
+                                {{ tech.name }}
+                                </a>
+                                <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary">
+                                    Projects using this {% if tech.type %} {{ tech.type }} {% else %} Technology {% endif %}
+                                </a>
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
-    <div class="container-md py-5">
-        <h2 class="text-center py-5" id="Resume">Resume</h2>
-        <div class="text-center">
-            <a href="{{ resume.pdf.url }}"  class="text-center py-5" target="_blank" download>Download</a>
-        </div>
-        <div class="text-center">
-            <iframe width="850" height="1300" scrolling="auto" frameborder="no"
-            src="https://docs.google.com/document/d/e/2PACX-1vSFvKtHjWtoOD8HOl6ZlOEgWbGkDOvfDKmeWmZ4q4oSauMqm3YPZVG8OQt5kHZTAQ/pub?embedded=true"></iframe>
+                </div>
+            {% endfor %}
         </div>
     </div>
+    <!-- Resume Modal -->
+    <div class="modal fade" id="resumemodal" tabindex="-1" role="dialog" aria-labelledby="resumemodal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title bg-dark text-white">Resume</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body mo bg-dark">
+                        <div class="ratio ratio-1x1">
+                            <embed src="{{ resume.pdf.url }}" type="application/pdf" width="100%" height="100%">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
