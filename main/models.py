@@ -2,8 +2,16 @@ from django.db import models
 
 
 
+class TechType(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Technology(models.Model):
     name = models.CharField(max_length=100)
+    type = models.ForeignKey(TechType, null=True, on_delete=models.SET_NULL)
     relevance = models.IntegerField()
     icon = models.ImageField(upload_to="images/")
 
@@ -13,13 +21,13 @@ class Technology(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
-    html = models.CharField(max_length=50)#text here will populate in html template, provides the detailed project description
+    html = models.CharField(max_length=50)#maps to html file, extends from baseproj template
     relevance = models.IntegerField()
     short_desc = models.CharField(max_length=280)
     repo = models.CharField(max_length=100)
     technologies = models.ManyToManyField(Technology)
     icon = models.ImageField(upload_to="images/")
-    #technology mix chart like in github? link directly from git repo?
+    #technology mix chart?
 
     def __str__(self) -> str:
         return self.name
@@ -33,4 +41,3 @@ class Resume(models.Model):
     def __str__(self) -> str:
         return self.name
 
-        
