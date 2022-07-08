@@ -5,7 +5,7 @@ from .models import (
     Project, 
     Resume,
     TechType,
-
+    VisualAid,
 )
 # To register models, add to import statement as well as models list
 
@@ -14,7 +14,7 @@ models = [
     Project,
     Resume,
     TechType,
-    
+    VisualAid,
 ]
 
 for m in models:
