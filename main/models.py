@@ -4,6 +4,14 @@ from django.db import models
 
 #######ADD MODELS TO ADMIN.PY AFTER MIGRATION###############
 
+
+class VisualAid(models.Model):
+    name = models.CharField(max_length=100)
+    img = models.ImageField(upload_to="images/")
+
+    def __str__(self) -> str:
+        return self.name
+
 class TechType(models.Model):
     name = models.CharField(max_length=100)
 
@@ -28,6 +36,7 @@ class Project(models.Model):
     short_desc = models.CharField(max_length=280)
     repo = models.CharField(max_length=100)
     technologies = models.ManyToManyField(Technology)
+    visual_aids = models.ManyToManyField(VisualAid)
     icon = models.ImageField(upload_to="images/")
     #technology mix chart?
 
