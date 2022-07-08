@@ -15,7 +15,7 @@ def home(response):#provides home page, extended from base. includes all project
     
     displaytechs = {}
     for project in projects:#manifest list of technologies used for each project
-        l = [tech for tech in project.technologies.all()]
+        l = [tech for tech in project.technologies.order_by('relevance')]
         d = {f'''{project.name}''': l}
         displaytechs = displaytechs | d
 
@@ -33,8 +33,15 @@ def home(response):#provides home page, extended from base. includes all project
 def proj_page(response, name):#queries db for project name and returns appropriate project html file
     project = Project.objects.get(name=name)
     title = project.name
+    techs = project.technologies.order_by('relevance')
 
-    return render(response, project.html, {'title': title, 'project': project})
+    mapping = {
+        'title': title,
+        'project': project,
+        'techs': techs
+        }
+
+    return render(response, project.html, mapping)
 
 
 def tech_page(response, name):#each tech page is extended from basetech.html
@@ -42,7 +49,13 @@ def tech_page(response, name):#each tech page is extended from basetech.html
     projects = Project.objects.order_by('relevance')
     title = tech.name
 
-    return render(response, 'basetech.html', {'title': title, 'tech': tech, 'projects': projects})
+    mapping = {
+        'title': title,
+        'tech': tech,
+        'projects': projects
+        }
+
+    return render(response, 'basetech.html', mapping)
 
 def bypass(response):
     return HttpResponse(response)
