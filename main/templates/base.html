@@ -132,10 +132,16 @@
                         <h5 class="modal-title bg-dark text-white">Resume</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body mo bg-dark">
+                    <div class="modal-body mo bg-dark text-white">
+                        {% if resume %}
                             <div class="ratio ratio-1x1">
                                 <embed src="{{ resume.pdf.url }}" type="application/pdf" width="100%" height="100%">
                             </div>
+                        {% else %}
+                        <p>
+                            Resume is temporarily unavailable at this time, please refer to my Linkedin for professional experience.
+                        </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

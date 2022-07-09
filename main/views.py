@@ -35,10 +35,16 @@ def proj_page(response, name):#queries db for project name and returns appropria
     title = project.name
     techs = project.technologies.order_by('relevance')
 
+    try:
+        resume = Resume.objects.get(current=True)
+    except Resume.DoesNotExist:
+        resume = None
+
     mapping = {
         'title': title,
         'project': project,
-        'techs': techs
+        'techs': techs,
+        'resume': resume
         }
 
     return render(response, project.html, mapping)
@@ -49,10 +55,16 @@ def tech_page(response, name):#each tech page is extended from basetech.html
     projects = Project.objects.order_by('relevance')
     title = tech.name
 
+    try:
+        resume = Resume.objects.get(current=True)
+    except Resume.DoesNotExist:
+        resume = None
+
     mapping = {
         'title': title,
         'tech': tech,
-        'projects': projects
+        'projects': projects,
+        'resume': resume
         }
 
     return render(response, 'basetech.html', mapping)
