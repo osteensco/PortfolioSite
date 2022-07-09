@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from .models import Technology, Project, Resume
 
 #more akin to request handlers, these functions provide a response from a request. depends upon hit in urls list.
+    
 
 def home(response):#provides home page, extended from base. includes all projects and technologies
     title = '''Scott Osteen's Portfolio'''
