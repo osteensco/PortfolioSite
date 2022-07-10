@@ -14,6 +14,3 @@ urlpatterns = [
     path("projects/<str:name>/", views.proj_page, name="proj_page"),
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, docuemnt_root=settings.STATIC_ROOT)
-#     urlpatterns += static(settings.MEDIA_URL, docuemnt_root=settings.MEDIA_ROOT)
