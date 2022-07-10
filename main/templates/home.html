@@ -47,7 +47,7 @@
                                     Made Using:
                                     </a>
                                     <div class="btn-group flex-wrap" role="group">
-                                        {% for key, value in displaytechs.items %}
+                                        {% for key, value in display_techs.items %}
                                             {% if project.name == key %}
                                                 {% for tech in value %}
                                                     <a href="{% url 'tech_page' tech.name %}"
