@@ -36,7 +36,7 @@ class Project(models.Model):
     short_desc = models.CharField(max_length=280)
     repo = models.CharField(max_length=100)
     technologies = models.ManyToManyField(Technology)
-    visual_aids = models.ManyToManyField(VisualAid)
+    visual_aids = models.ManyToManyField(VisualAid, blank=True)
     icon = models.ImageField(upload_to="images/")
     #technology mix chart?
 
