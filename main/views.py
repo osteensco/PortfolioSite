@@ -34,7 +34,7 @@ def proj_page(response, name):#queries db for project name and returns appropria
     project = Project.objects.get(name=name)
     title = project.name
     techs = project.technologies.order_by('relevance')
-
+    visual_aids = {aid.name: aid.img for aid in project.visual_aids.all()}
     try:
         resume = Resume.objects.get(current=True)
     except Resume.DoesNotExist:
@@ -44,8 +44,9 @@ def proj_page(response, name):#queries db for project name and returns appropria
         'title': title,
         'project': project,
         'techs': techs,
+        
         'resume': resume
-        }
+        } | visual_aids
 
     return render(response, project.html, mapping)
 
@@ -54,7 +55,6 @@ def tech_page(response, name):#each tech page is extended from basetech.html
     tech = Technology.objects.get(name=name)
     projects = Project.objects.order_by('relevance')
     title = tech.name
-
     try:
         resume = Resume.objects.get(current=True)
     except Resume.DoesNotExist:
@@ -71,3 +71,5 @@ def tech_page(response, name):#each tech page is extended from basetech.html
 
 def bypass(response):
     return HttpResponse(response)
+
+

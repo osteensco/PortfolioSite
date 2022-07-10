@@ -5,58 +5,66 @@
 
 {% block proj_readme %}
 
-<h4 class="text-left py-5">An automated Dashboard</h4>
+<div class="row gx-5 py-2">
+    <h4 class="text-left py-5">An automated Dashboard</h4>
 
-<p class="row py-2">
-This dashboard is proof of concept excercise for the final stage of my Data Pipeline project. 
-I am executing API calls to ingest rainfall data that lands in Google Bigquery. 
-With the paid version of Tableau I would be able to connect directly to my Bigquery table, however, 
-Tableau Public will only allows automated extracts from Google Sheets. Luckily, Google Sheets allows you to 
-set up a live connection with Bigquery, so for this project Google Sheets is essentially used as a staging area for 
-the backend of my Dashboard.
-</p>
-
-<h4 class="text-left py-5">Try out the Interactive Dashboard</h4>
-
-<div class='tableauPlaceholder' id='viz1656636082856' style='position: relative'>
-    <noscript>
-        <a href='#'>
-            <img alt='Ga Rainfall ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;GA&#47;GARain&#47;GaRainfall&#47;1_rss.png' style='border: none' />
-        </a>
-    </noscript>
-    <object class='tableauViz'  style='display:none;'>
-        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-        <param name='embed_code_version' value='3' /> 
-        <param name='site_root' value='' />
-        <param name='name' value='GARain&#47;GaRainfall' />
-        <param name='tabs' value='no' />
-        <param name='toolbar' value='yes' />
-        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;GA&#47;GARain&#47;GaRainfall&#47;1.png' /> 
-        <param name='animate_transition' value='yes' />
-        <param name='display_static_image' value='yes' />
-        <param name='display_spinner' value='yes' />
-        <param name='display_overlay' value='yes' />
-        <param name='display_count' value='yes' />
-        <param name='language' value='en-US' />
-        <param name='filter' value='publish=yes' />
-    </object>
+    <p class="col-md-6">
+        This dashboard is proof of concept excercise for the final stage of my Data Pipeline project.
+        I am executing API calls to ingest rainfall data that lands in Google Bigquery.
+        With the enterprise version of Tableau I would be able to connect directly to my Bigquery table, however,
+        Tableau Public will only allows automated extracts from Google Sheets. Luckily, Google Sheets allows you to
+        set up a live connection with Bigquery, so for this project Google Sheets is essentially used as a staging area
+        for
+        the backend of my Dashboard.
+    </p>
+    <p class="col-md-6">
+        My Data Pipeline and the Tableau Extract are both automatically run daily to pull in the previous days data.
+        Tableau public can be automated but won't allow a specific time for the run to be scheduled, so the dashboard
+        will always lag by 1-2 days depending on if the Tableau extract has run yet that day.
+        In Tableau I utilize sets and parameters to acheive the different views as well as some calculated columns.
+        In order to make the dashboard more interactive, each view is set as a filter to allow specific drilldowns
+        by county, amount of rainfall, and specific days.
+    </p>
 </div>
+<div class="row justify-content-center py-5 mb-5">
+    <h4 class="text-left py-5">Try out the Interactive Dashboard</h4>
+    <p class="text-center">
+        *If on mobile, dashboard is best displayed by rotating device horizontally*
+    </p>
+    <div class='tableauPlaceholder' id='viz1657475252727' style='position: relative'>
+        <noscript>
+            <a href='#'>
+                <img alt='Ga Rainfall ' 
+                src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;GA&#47;GARain&#47;GaRainfall&#47;1_rss.png'
+                style='border: none' />
+            </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='GARain&#47;GaRainfall' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image'
+                value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;GA&#47;GARain&#47;GaRainfall&#47;1.png' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+        </object>
+    </div>
+</div>
+    <script type='text/javascript'>
+        var divElement = document.getElementById('viz1657475252727'); 
+        var vizElement = divElement.getElementsByTagName('object')[0]; 
+        vizElement.style.width = '100%'; 
+        vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; 
+        var scriptElement = document.createElement('script'); 
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; 
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
 
-<script type='text/javascript'>                    
-    var divElement = document.getElementById('viz1656636082856');                    
-    var vizElement = divElement.getElementsByTagName('object')[0];                    
-    if ( divElement.offsetWidth > 800 ) { 
-        vizElement.style.width='1120px';vizElement.style.height='1127px';
-        } 
-    else if ( divElement.offsetWidth > 500 ) { 
-        vizElement.style.width='1120px';vizElement.style.height='1127px';
-        } 
-    else { 
-        vizElement.style.width='100%';vizElement.style.height='1427px';
-        }                     
-    var scriptElement = document.createElement('script');                    
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
-    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
-</script>
-
-{% endblock %}
+    {% endblock %}
