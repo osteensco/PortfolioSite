@@ -5,22 +5,54 @@
 {% block proj_readme %}
 
 
-<h4 class="text-center py-5">An exciting and dynamic space shooter made with Pygame.</h4>
+<div class="row justify-content-center my-5">
+    <h4 class="text-center py-5">An exciting and dynamic space shooter made with Python</h4>
+    <div class="container col-md-6">
+        <iframe 
+        width="100%" 
+        height="100%"
+        style="aspect-ratio: 1.5/1" 
+        src="https://www.youtube.com/embed/scf27DxEf3Y" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+        </iframe>
+    </div>
+</div>
+<div class="row justify-content-center gx-5 mb-5 my-5">
+    <div class="container mx-5 col-md-4">
+        <h6 class="text-left py-2">Object Oriented Programming</h6>
+        <p class="row py-2">
+        This project displays a solid understanding of OOP with many objects interacting 
+        and altering each other. Most classes are child classes that utilize inheritance. There are 
+        menu classes to help provide navigation and creating a game instance, ship classes to handle 
+        boss's and enemies, drops, lasers, visual effects and more.
+        </p>
+    </div>
+    <div class="container mx-5 col-md-4">
+        <h6 class="text-left py-2">Dynamic Bosses</h6>
+        <p class="row py-2">
+        Each Boss you face is procedurally generated with a different body, weapon, and 
+        apparatus. Each boss weapon and apparatus have their own mechanics and nuances.
+        For example, one of weapons may do extensively more damage and even cut through the 
+        toughest of defenses, while another will lie in wait while blending in with the vastness 
+        of space. The boss apparetuses can provide extra defense, spawn drones to help fight, or 
+        help turn the player's own attacks against them.
+        </p>
+    </div>
+    <div class="container mx-5 col-md-4">
+        <h6 class="text-left py-2">Power Up Drops</h6>
+        <p class="row py-2">
+        As enemies are defeated they have a change to drop capsules that will provide some
+        sort of power boost to the player. The effects of these can be many different things 
+        from increasing the player's fire rate to providing a temporarily powerful shield that 
+        destroy's enemy ships and protects the player from (almost) anything.
+        </p>
+    </div>
+</div>
 
 
-<h6 class="text-left py-2">Dynamic Bosses</h6>
-
-<p class="row py-2">
-Boss's you face are procedurally generated with a different body, weapon, and 
-assets. Each boss weapon and asset have their own mechanics and nuances.
-</p>
-
-<h6 class="text-left py-2">Object Oriented Programming</h6>
-
-<p class="row py-5 mb-5">
-This project displays a solid understanding of OOP with many objects interacting 
-and altering each other.
-</p>
 
 
 {% endblock %}
