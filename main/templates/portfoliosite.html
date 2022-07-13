@@ -3,27 +3,43 @@
 
 
 {% block proj_readme %}
+<div class="row my-5 pt-5">
+    <div class="container col-md-6">
+        <img src="{{ SiteDB_Diagram.url }}" class="img-fluid" style="aspect-ratio: 1.5/1"/>
+    </div>
+    <div class="container col mt-5">
+        <h4 class="text-center py-2">Backend</h4>
+        <p class="text-start ms-5">
+            This site was built with Python and the Django framework on the backend. I used templates that build off of 
+            each other in a way that makes the site easy to scale up with minimum backend changes. The site is hosted on 
+            Heroku, and uses a Heroku hosted Postgresql database. Static files are stored and served through an AWS 
+            S3 bucket. The database is relational, and is organized in a way to allow for implementing easy navigation to 
+            various sections throughout the website.
+        </p>
+    </div>
+</div>
+<div class="row my-5"></div>
+<div class="row my-5">
+    <div class="container col mt-5">
+        <h4 class="text-center py-2">Frontend</h4>
+        <p class="text-start">
+            The frontend is built off of Bootstrap 5. I utilize what Bootstrap has out of the box and customized certain
+            classes. The navigation bar is a good example of this, I added a frosted glass effect over the whole pane and 
+            added a shadowbox to house the main navigation links.
+        </p>
+        <p>
+            In terms of page structure, I use a base template that contains my head, navigation, and footer sections. The 
+            home page and the templates for projects and technologies are extended from the base template and each technology 
+            page uses the basetech template. Because projects will have varying amounts of visual aids and content, they each 
+            have a customized html file which is extended from the baseproj template.
+        </p>
+    </div>
+    <div class="container col-md-6">
+        <img src="{{ SiteNav_Diagram.url }}" class="img-fluid" style="aspect-ratio: 1.5/1"/>
+    </div>
+</div>
 
-<h4 class="text-left py-5">Backend</h4>
 
-<p class="row py-2">
-This site was built with Python and Django.
-The main page of the site is meant to provide a high level overview of my 
-skillset, projects, and experience. Additionally, I wanted to provide the 
-option to take a deeper dive into how I implemented different technologies 
-and the approach I took for each project. Because Django is great at building 
-out scalable content on web apps it was a great choice to build a portfolio site 
-where I could easily add content.
-</p>
-
-
-<h4 class="text-left py-5">Frontend</h4>
-
-<p class="row py-5 mb-5">
-On the frontend I built off of Bootstrap and leveraged the grid system. My goal 
-was for an easy to follow layout with plenty of options for the user in how they 
-wanted to peruse.
-</p>
 
 {% endblock %}
 
