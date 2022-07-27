@@ -9,19 +9,18 @@
     <h4 class="text-left py-5">An automated Dashboard</h4>
 
     <p class="col-md-6">
-        This dashboard is proof of concept excercise for the final stage of my Data Pipeline project.
+        This dashboard is a proof of concept excercise for the final stage of my Data Pipeline project.
         I am executing API calls to ingest rainfall data that lands in Google Bigquery.
         With the enterprise version of Tableau I would be able to connect directly to my Bigquery table, however,
         Tableau Public will only allows automated extracts from Google Sheets. Luckily, Google Sheets allows you to
         set up a live connection with Bigquery, so for this project Google Sheets is essentially used as a staging area
-        for
-        the backend of my Dashboard.
+        for the backend of my Dashboard.
     </p>
     <p class="col-md-6">
         My Data Pipeline and the Tableau Extract are both automatically run daily to pull in the previous days data.
         Tableau public can be automated but won't allow a specific time for the run to be scheduled, so the dashboard
         will always lag by 1-2 days depending on if the Tableau extract has run yet that day.
-        In Tableau I utilize sets and parameters to acheive the different views as well as some calculated columns.
+        In Tableau I utilize sets, parameters and some calculated fields to acheive the different views.
         In order to make the dashboard more interactive, each view is set as a filter to allow specific drilldowns
         by county, amount of rainfall, and specific days.
     </p>
