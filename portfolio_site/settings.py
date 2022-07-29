@@ -55,12 +55,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'storages',
-    "corsheaders",
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,19 +66,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-CORS_ALLOW_HEADERS = "access-control-allow-origin"
-
-CORS_ALLOWED_ORIGINS = [
-    "https://scottosteen.com",
-    "https://www.scottosteen.com",
-    "http://localhost:8080",
-    "http://127.0.0.1:8000",
-]
-
-
-
-
 
 ROOT_URLCONF = 'portfolio_site.urls'
 
