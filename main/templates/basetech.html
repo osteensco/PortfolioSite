@@ -25,12 +25,12 @@
                         <p class="card-text">{{ project.short_desc }}</p>
                         <div class="row justify-content-evenly align-items-center">
                             <div class="d-grid col">
-                                <a href="{% url 'proj_page' project.name %}" class="btn btn-outline-primary m-1" role="button">
+                                <a href="{% url 'proj_page' project.name %}" class="cardbtn btn btn-outline-primary m-1" role="button">
                                     Details
                                 </a>
                             </div>    
                             <div class="d-grid col">
-                                <a href={{project.repo}} target="_blank" class="btn btn-outline-primary m-1" role="button" style="margin: 0px 60px">
+                                <a href={{project.repo}} target="_blank" class="cardbtn btn btn-outline-primary m-1" role="button" style="margin: 0px 60px">
                                     Code
                                 </a>
                             </div>    
@@ -45,7 +45,7 @@
                                         {% if project.name == key %}
                                             {% for tech in value %}
                                                 <a href="{% url 'tech_page' tech.name %}"
-                                                class="btn btn-outline-primary"> 
+                                                class="cardbtn btn btn-outline-primary"> 
                                                 {{ tech.name }}
                                                 </a>
                                             {% endfor %}

@@ -22,22 +22,63 @@
     object-fit: contain;
 }
 
-.nav-link {
-    transition: 0.5;
-}
-
-.nav-link:hover {
-    color: rgba(0, 0, 0);
-    background: #0d6efd;
-    border: rgba(0, 0, 0);
+.card {
+    transition: 2s;
 }
 
 .card:hover {
     border-radius: 15px; 
-    box-shadow: 0 0 45px #0d6dfd9a;
+    box-shadow: 0 0 60px #0d6dfd9a;
+}
+
+.nav-link {
+    transition: .7s;
+}
+
+.nav-link:hover {
+    color: white;
+    background: #0d6dfd9a;
+    border: rgba(0, 0, 0);
+    font-weight: bolder;
+    letter-spacing: .2em;
+    
 }
 
 .footer:hover {
-    border-radius: 15px; 
+
     box-shadow: 0 0 45px #0d6dfd9a;
+    background-color: #0d6dfd9a;
+    font-weight: bolder;
 }
+
+.alt {
+    transition: 2s;
+}
+
+.alt.nav-link:hover {
+    color: white;
+    background: transparent;
+}
+.alt.btn-outline-primary {
+    border-radius: 20px; 
+
+    font-weight: bolder;
+}
+
+.alt.btn-outline-primary:hover {
+    border-radius: 20px; 
+    box-shadow: 0 0 45px #0d6dfd9a;
+    background-color: #0d6dfd9a;
+    font-weight: bolder;
+}
+
+.cardbtn {
+    transition: 2s;
+}
+
+.cardbtn:hover {
+    /* font-weight: bold; */
+    letter-spacing: .1em;
+}
+
+

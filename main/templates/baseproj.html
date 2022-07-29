@@ -10,10 +10,10 @@
     <div class="container pt-5">
         <div class="row">
             <div class="col text-center">
-                <a href={{project.repo}} target="_blank" class="btn btn-outline-primary align-self-center">
+                <a href={{project.repo}} target="_blank" class="cardbtn btn btn-outline-primary align-self-center">
                     Code
                 </a>
-                <a href='#techused' class="btn btn-outline-primary align-self-center">
+                <a href='#techused' class="cardbtn btn btn-outline-primary align-self-center">
                     Tech Used
                 </a>
             </div>
@@ -36,7 +36,7 @@
                             <img class="card-img-top" src="{{ tech.icon.url }}">
                         </a>
                         <div class="card-body d-flex flex-column">
-                            <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary">{{ tech.name }}</a>
+                            <a href="{% url 'tech_page' tech.name %}" class="cardbtn btn btn-outline-primary">{{ tech.name }}</a>
                         </div>
                     </div>
                 </div>
