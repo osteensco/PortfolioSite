@@ -1,0 +1,51 @@
+{% extends 'baseproj.html' %}
+{% load static %}
+
+
+{% block proj_readme %}
+
+
+
+<div class="row justify-content-center gx-5 mb-5 my-5">
+    <div class="container mx-5 col-md-4">
+        <h6 class="text-left py-2">A classic game with some enhancements</h6>
+        <p class="row py-2">
+        This was my take on a simple game built with Javascript, CSS, and a little HTML. Pong is a game almost everyone is familiar with, 
+        but I wanted to add a little bit more excitement. The ball will drop additional effects that the player or cpu can pick up altering 
+        different aspects of the game.
+        </p>
+    </div>
+    <div class="container mx-5 col-md-4">
+        <h6 class="text-left py-2">Linked lists and recursion</h6>
+        <p class="row py-2">
+        Each drop mechanic adds additional complexity to the game, a great example of which is spawning additional balls. I use recursive functions that 
+        manipulate linked lists to handle scoring and removing extra balls after a goal or when the game ends.
+        </p>
+    </div>
+    <div class="container mx-5 col-md-4">
+        <h6 class="text-left py-2">CSS effects and animations</h6>
+        <p class="row py-2">
+        Every object in the game is created with CSS and HTML or DOM objects created via Javascript. I also took advantage of what can be 
+        done in CSS to polish the game through animations and other visual effects. I use pairs of keyframes and sub classes to allow for 
+        paddle color changes and the visual indicator for when the ball hits the paddle. This way I can mimic using the same animation on 
+        an object indefinently based on collision checks.
+        </p>
+    </div>
+    <div class="container mx-5 col-md-4">
+        <div class="card text-center bg-transparent text-white mb-3">
+            <a class="card-body text-decoration-none" href="{% url 'pong_embed' %}" role="button" target="_blank">
+                <h5 class="card-title" style="font-size: 5vh;" >Click here to try it out!</h5>
+            </a>
+        </div>
+
+        <!-- <a class="text-decoration-none" style="font-size: 5vh;" href="{% url 'pong_embed' %}">Click here to try it out!</a> -->
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

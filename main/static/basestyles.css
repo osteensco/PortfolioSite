@@ -32,6 +32,12 @@
     border: rgba(0, 0, 0);
 }
 
+.card:hover {
+    border-radius: 15px; 
+    box-shadow: 0 0 45px #0d6dfd9a;
+}
 
-
-
+.footer:hover {
+    border-radius: 15px; 
+    box-shadow: 0 0 45px #0d6dfd9a;
+}

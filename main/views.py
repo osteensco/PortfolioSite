@@ -80,6 +80,14 @@ def tech_page(response, name):#each tech page is extended from basetech.html
 
     return render(response, 'basetech.html', mapping)
 
+def embed(response, name):
+    mapping = {'name': name}
+    return render(response, f'{name}.html', mapping)
+
+
+
+
+
 def bypass(response):
     return HttpResponse(response)
 

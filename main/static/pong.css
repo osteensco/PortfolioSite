@@ -1,0 +1,229 @@
+*, *::after,*::before {
+    box-sizing: border-box;
+}
+
+
+
+
+body {
+    display: flex;
+    margin: 0;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+.button {
+    --colorchnge: orange;
+
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-family: sans-serif;
+    font-size: 10vh;
+    width: fit-content;
+    color: white;
+    background: transparent;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.5s;
+    
+}
+
+.button:hover {
+    text-indent: .5rem;
+    letter-spacing: .5rem;
+    color: var(--colorchnge);
+    border-radius: 15px;
+    box-shadow: 0 0 45px var(--colorchnge);
+}
+
+
+.player {
+    left: 1vw;
+}
+
+.cpu {
+    right: 1vw;
+}
+
+.paddle {
+    --position: 50;
+
+
+    position: absolute;
+    background-color: orange;
+    top: calc(var(--position) * 1vh);
+    border-radius: 30%;
+    transform: translateY(-50%);
+    width: 2vh;
+    height: 15vh;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 5px orange;
+}
+
+.paddle.pulse1 {
+    animation: pulse1 .4s;
+}
+
+.paddle.pulse2 {
+    animation: pulse2 .4s;
+    animation-direction: reverse;
+}
+
+.ball {
+    --x: 50;
+    --y: 50;
+
+
+    position: absolute;
+    background-color: black;
+    left: calc(var(--x) * 1vw);
+    top: calc(var(--y) * 1vh);
+    border-radius: 50%;
+    transform: translateY(-50%, -50%);
+    width: 3vh;
+    height: 3vh;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 5px yellow;
+}
+
+.ball.hit1 {
+    animation: hit1 0.2s;
+}
+
+.ball.hit2 {
+    animation: hit2 0.2s;
+    animation-direction: reverse;
+}
+
+.drop {
+    --x: 50;
+    --y: 50;
+
+
+    position: absolute;
+    background-color: blueviolet;
+    opacity: 0;
+    left: calc(var(--x) * 1vw);
+    top: calc(var(--y) * 1vh);
+    border-radius: 20%;
+    transform: translateY(-50%, -50%);
+    width: 1vh;
+    height: 2vh;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 5px blueviolet;
+}
+
+.message {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    font-family: sans-serif;
+    font-size: 10vh;
+    width:fit-content;
+    color: white;
+    background: transparent;
+    z-index: 1000;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 10vh;
+    color: orange;
+}
+
+.score > * {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 2vh;
+    margin: 1vh 0;
+    opacity: .5;
+}
+
+.score > :first-child {
+    text-align: right;
+    border-right: 2vh solid orange
+}
+
+
+@keyframes pulse1 {
+	0% {
+		box-shadow: 0px 0px 15px 40px rgba(255, 255, 255, 0.1);
+        background-color: rgb(241, 250, 165);
+	}
+
+	100% {
+		box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.9);
+        background-color: rgb(241, 250, 165);
+	}
+}
+
+@keyframes pulse2 {
+	0% {
+        box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.9);
+        background-color: rgb(241, 250, 165);
+	}
+
+	100% {
+		box-shadow: 0px 0px 15px 40px rgba(255, 255, 255, 0.1);
+        background-color: rgb(241, 250, 165);
+	}
+}
+
+
+@keyframes hit1 {
+	0% {
+        box-shadow: 0px 0px 15px 40px rgba(255, 255, 255, 0);
+        background-color: rgb(227, 252, 5);
+	}
+
+
+	100% {
+        box-shadow: 0px 0px 15px 5px rgba(227, 252, 5, 0.9);
+        background-color: rgba(255, 255, 255, 0);
+	}
+}
+
+@keyframes hit2 {
+	0% {
+        box-shadow: 0px 0px 15px 5px rgba(227, 252, 5, 0.9);
+        background-color: rgba(255, 255, 255, 0);
+	}
+
+	100% {
+        box-shadow: 0px 0px 15px 40px rgba(255, 255, 255, 0);
+        background-color: rgb(227, 252, 5);
+	}
+}
+
+
+i {/* used for streaks in goal animation */
+    position: absolute;
+    width: 300px;
+    transform: translateX(-300px);
+    background: linear-gradient(transparent, rgb(227, 252, 5));
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    animation: goal;
+}
+
+
+@keyframes goal
+{
+    0%
+    {
+        
+    }
+    100%
+    {
+        transform: translateX(300vw);
+    }
+}
