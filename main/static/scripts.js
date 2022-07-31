@@ -93,7 +93,9 @@ class Cookie {
 }
 
 
-let id = Cookie('id')
-let session = Cookie('sessionID')
+let id = new Cookie('id')
+let session = new Cookie('sessionID')
 
-console.log('Success')
+
+
+

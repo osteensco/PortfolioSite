@@ -9,7 +9,7 @@ function randomNumberBetween(min, max) {
     return Math.random() * (max - min) + min
 }
 
-export function createElem(cnames, type="div") {
+function createElem(cnames, type="div") {
     let elem = document.createElement(type)
     elem.classList.add(cnames)
     document.body.appendChild(elem)
@@ -17,14 +17,14 @@ export function createElem(cnames, type="div") {
     return elem
 }
 
-export function cleanup(cname) {
+function cleanup(cname) {
     document.querySelectorAll(`.${cname}`).forEach(i => {i.remove()})
 }
 
 
 
 //classes
-export class Ball {
+class Ball {
     constructor(clone=false) {
         this.Elem = createElem("ball")
         this.dropReady = false
@@ -238,7 +238,7 @@ export class Ball {
 
 
 
-export class Paddle {
+class Paddle {
     constructor(boolean, paddleElem, scoreElem, ball) {
         this.paddleElem = paddleElem
         this.scoreElem = scoreElem
@@ -390,7 +390,7 @@ let mechanics = [
 
 
 
-export class Drop {
+class Drop {
     constructor(ball) {
         this.Elem = createElem("drop")
         this.ball = ball
@@ -504,7 +504,7 @@ export class Drop {
 
 
 
-export class Streak {
+class Streak {
     constructor(direction, ball) {
         this.Elem = createElem("streak", "i")
         this.lowerBound = (ball.rect.top - ball.rect.height)
@@ -529,7 +529,7 @@ export class Streak {
 
 
 
-export class Message {
+class Message {
     constructor() {
         this.Elem = createElem("message")
         this.reset()    
@@ -694,14 +694,6 @@ document.addEventListener("mousemove", e => {
     }
 
 })
-
-
-
-
-
-
-
-
 
 
 
