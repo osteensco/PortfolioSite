@@ -48,11 +48,11 @@ class Cookie {
     }
 
     set(field,value,exdays) {
-        if (exdays) {
+        if (exdays != 0) {
             let exp = "expires=" + exdays
-            document.cookie = field + "=" + value + ";" + exp + ";path=/"
+            document.cookie = field + "=" + value + ";" + exp
         } else {//cookie should expire on browser close if not listed
-            document.cookie = field + "=" + value
+            document.cookie = field + "=" + value 
         }
 
     }
@@ -63,15 +63,17 @@ class Cookie {
         let ca = decodedCookie.split(';')
         for (i = 0; i < ca.length; i++) {
             let c = ca[i]
+            
             while (c.charAt(0) == ' ') {
                 c = c.substring(1)
             }
             if (c.indexOf(name) == 0) {
                 return c.substring(name.length, c.length)
             } else {
-                return ""
+                continue
             }
         }
+        return ""
     }
     
     read(type) {
@@ -118,6 +120,10 @@ class Webhook {
 }
 
 
+
+
+
+///////////////scripts/////////////////
 
 let id = new Cookie('id')
 let session = new Cookie('sessionID')
