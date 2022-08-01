@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Technology, Project, Resume
-
+import os
 
 
 
@@ -24,7 +24,10 @@ def set_resume():
     return r
 
 
+webhooks = {
+    'discord_endpoint': os.environ.get('DISCORD_ENDPOINT')
 
+}
 
 #view functions
 #more akin to request handlers, these functions provide a response from a request. depends upon hit in urls list.
@@ -35,13 +38,14 @@ def home(response):#provides home page, extended from base. includes all project
     display_techs = set_tech_dict(projects)
     resume = set_resume()
 
+    #dictionary is used for passing things to html code
     mapping = {
         'title': title,
         'projects': projects,
         'techs': techs,
         'resume': resume,
         'display_techs': display_techs
-        }#dictionary is used for passing things to html code
+        } | webhooks
 
     return render(response, 'home.html', mapping)
 
@@ -58,7 +62,7 @@ def proj_page(response, name):#queries db for project name and returns appropria
         'project': project,
         'techs': techs,
         'resume': resume
-        } | visual_aids
+        } | visual_aids | webhooks
 
     return render(response, project.html, mapping)
 
@@ -76,12 +80,13 @@ def tech_page(response, name):#each tech page is extended from basetech.html
         'projects': projects,
         'resume': resume,
         'display_techs': display_techs
-        }
+        } | webhooks
 
     return render(response, 'basetech.html', mapping)
 
 def embed(response, name):
-    mapping = {'name': name}
+    mapping = {'name': name} | webhooks
+
     return render(response, f'{name}.html', mapping)
 
 

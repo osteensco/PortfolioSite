@@ -83,19 +83,58 @@ class Cookie {
         return i
     }
 
+}
 
 
 
+///////////////////Webhook///////////////////////
 
+class Webhook {
+    constructor (data, endpoint){
+        this.payload = data
+        this.endpoint = this.build(endpoint)
+        this.send(data, this.endpoint)
+    }
+
+    build (endpoint) {
+        let ep = document.getElementById(endpoint)
+        let url = ep.value
+        ep.remove()
+        return url
+    }
+
+    send (data, endpointURL) {
+        const request = new XMLHttpRequest()
+        request.open("POST", endpointURL)
+  
+        request.setRequestHeader('Content-type', 'application/json')
+  
+        request.send(JSON.stringify(data))
+
+    }
 
 
 
 }
 
 
+
 let id = new Cookie('id')
 let session = new Cookie('sessionID')
 
 
+let discord = new Webhook(
+    {
+        username: "Scott's Portfolio Site Traffic",
+        content: `______
 
+    ${id.value} 
+    ${session.value}    
+        Visited: ${document.location.href}
+        ${id.datetime}
+
+    ______`
+    },
+    "discord_endpoint"
+)
 
