@@ -144,3 +144,29 @@ let discord = new Webhook(
     "discord_endpoint"
 )
 
+// let gcp = new Webhook(
+//     {
+//         TS: id.datetime,
+//         id: id.value,
+//         session: session.value,
+//         path: document.location.href,
+//         referrer: document.referrer,
+//         device: navigator.userAgent,
+//         language: navigator.language
+
+//     },
+//     "gcp_endpoint"
+// )
+
+
+
+
+
+
+//to do////
+
+////revamp data pipeline, each datasource is it's own cloud function
+////add webhook endpoint bigquery ingestion method to pipeline
+////////this should build on the data pipeline library, proves scalability to project
+///////website endpoint will also be it's own cloud function
+//////each function is a different branch of same git repo, it's updated in main and pushed to all branches
