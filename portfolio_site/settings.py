@@ -33,6 +33,7 @@ if os.environ.get('DJANGO_DEBUG_VALUE') == 'False':
     DEBUG = False
 else:
     DEBUG = True
+    
 
 # DEBUG_PROPAGATE_EXCEPTIONS = True #use for reading error messages if DEBUG = False
 
@@ -89,18 +90,13 @@ WSGI_APPLICATION = 'portfolio_site.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {}
 
 cmd = "heroku config:get DATABASE_URL" #heroku cli has to be configured for your project, otherwise need to add -a [app name]
 
-heroku_db = subprocess.getoutput(cmd)
+heroku_db = subprocess.getoutput(cmd)#if manage.py commands get hung up with no error until cancelling(crtl+c), manually log into heroku cli('heroku login' in terminal) and retry
 
-DATABASES['default'] = dj_database_url.config(default=heroku_db, conn_max_age=600, ssl_require=True) #sets default connection to heroku DB automatically without env variables
+DATABASES['default'] = dj_database_url.config(default=heroku_db, conn_max_age=600, ssl_require=True) #pulls in env variable and sets default connection to heroku DB automatically
 
 
 

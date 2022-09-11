@@ -26,7 +26,7 @@ def set_resume():
 
 webhooks = {
     'discord_endpoint': os.environ.get('DISCORD_ENDPOINT'),
-    # 'gcp_endpoint' : os.environ.get('GCP_ENDPOINT')
+    'gcp_endpoint' : os.environ.get('GCP_ENDPOINT')
 }
 
 #view functions
