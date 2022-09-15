@@ -144,9 +144,10 @@ let discord = new Webhook(
     "discord_endpoint"
 )
 
-let gcp = new Webhook(
+let gcp = new Webhook(/////////////add plaintext timestamp field///////////////////////////////////////////////////////
     {
         TimeStamp: [id.datetime],
+        PlainTextTS: [`${id.datetime}`],
         ID: [id.value],
         Session: [session.value],
         Page: [document.location.href],
@@ -157,23 +158,3 @@ let gcp = new Webhook(
     "gcp_endpoint"
 )
 
-// {       
-//     "TimeStamp": "",
-//     "ID": "",
-//     "Session": "",
-//     "Page": "",
-//     "Referrer": "",
-//     "Device": "",
-//     "Language": ""
-// }
-
-
-
-
-//to do////
-
-////revamp data pipeline, each datasource is it's own cloud function
-////add webhook endpoint bigquery ingestion method to pipeline
-////////this should build on the data pipeline library, proves scalability to project
-///////website endpoint will also be it's own cloud function
-//////each function is a different branch of same git repo, it's updated in main and pushed to all branches

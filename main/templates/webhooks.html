@@ -1,0 +1,35 @@
+{% extends 'baseproj.html' %}
+
+
+{% block proj_readme %}
+
+
+<div class="clearfix">
+    <h4 class="text-center py-2">Website Traffic Webhooks</h4>
+    <img src="{{ WebsiteWebhook_Diagram.url }}" class="img-fluid col-md-7 float-md-end mb-3 ms-md-3" style="aspect-ratio: 3/2"/>
+    <p>
+        I wanted to create a simple proof of concept webhook, and an easy use case is providing real time messaging when events occur.
+        I also needed an easy way to monitor web traffic on my portfolio to get a sense of how often it gets viewed.
+        Many applications have built in webhooks and/or endpoints for similar purposes that are easy to integrate with. Discord is one example
+        and is what I used to set up an endpoint for real time messaging. 
+    </p>
+    <p>
+        I also wanted to ingest the data I was getting from the traffic to my portfolio in case I ever wanted to any sort of model 
+        building or analysis on the data in the future. I knew that I wanted this data to ultimately land in BigQuery, so I decided to use 
+        existing infrastructure I built as part of my Data Pipeline project. While one Webhook lands in a Discord channel, the other sends the Post 
+        Request to an HTTP triggered Google Cloud Function that acts as the endpoint. This Cloud Function provides a response and publishes 
+        the Request body to a Google Pub/Sub topic. This topic then triggers the appropriate Data Pipeline Cloud Function which cleans and prepares 
+        the data to land in BigQuery.
+    </p>
+    <p>            
+        Both this webhook and the one posting to Discord were built off the same class using Javascript. The class provides the framework for 
+        gathering data and sending the Post Request. Whenever a page is loaded, a Webhook object is created for each endpoint and executes their 
+        workflows. 
+    </p>
+
+
+
+
+</div>
+
+{% endblock %}
