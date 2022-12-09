@@ -32,7 +32,6 @@ webhooks = {
 #view functions
 #more akin to request handlers, these functions provide a response from a request. depends upon hit in urls list.
 def home(response):#provides home page, extended from base. includes all projects and technologies
-    title = '''Scott Osteen's Portfolio'''
     projects = Project.objects.order_by('relevance')
     techs = Technology.objects.order_by('relevance')
     display_techs = set_tech_dict(projects)
@@ -40,7 +39,6 @@ def home(response):#provides home page, extended from base. includes all project
 
     #dictionary is used for passing things to html code
     mapping = {
-        'title': title,
         'projects': projects,
         'techs': techs,
         'resume': resume,

@@ -94,9 +94,9 @@ DATABASES = {}
 
 cmd = "heroku config:get DATABASE_URL" #heroku cli has to be configured for your project, otherwise need to add -a [app name]
 
-heroku_db = subprocess.getoutput(cmd)#if manage.py commands get hung up with no error until cancelling(crtl+c), manually log into heroku cli('heroku login' in terminal) and retry
+heroku_db = subprocess.run(cmd, capture_output=True, shell=True, text=True, input="y")#if manage.py commands get hung up with no error until cancelling(crtl+c), manually log into heroku cli('heroku login' in terminal) and retry
 
-DATABASES['default'] = dj_database_url.config(default=heroku_db, conn_max_age=600, ssl_require=True) #pulls in env variable and sets default connection to heroku DB automatically
+DATABASES['default'] = dj_database_url.config(default=heroku_db.stdout, conn_max_age=600, ssl_require=True) #pulls in env variable and sets default connection to heroku DB automatically
 
 
 
