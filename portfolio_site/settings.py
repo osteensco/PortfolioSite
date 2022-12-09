@@ -31,6 +31,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 if os.environ.get('DJANGO_DEBUG_VALUE') == 'False':
     DEBUG = False
+    SECURE_SSL_REDIRECT = True
 else:
     DEBUG = True
     
