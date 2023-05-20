@@ -144,7 +144,7 @@ let discord = new Webhook(
     "discord_endpoint"
 )
 
-let gcp = new Webhook(/////////////add plaintext timestamp field///////////////////////////////////////////////////////
+let gcp = new Webhook(
     {
         TimeStamp: [id.datetime],
         PlainTextTS: [`${id.datetime}`],

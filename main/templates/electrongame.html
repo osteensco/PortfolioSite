@@ -1,0 +1,48 @@
+{% extends 'baseproj.html' %}
+{% load static %}
+
+
+{% block proj_readme %}
+
+
+
+<div class="row justify-content-center gx-5 mb-5 my-5">
+    <div class="container mx-5 col-md-4">
+        <h6 class="text-left py-2">Security best practices</h6>
+        <p class="row py-2">
+        Most tutorials you see online using Electron are relatively old and will set nodeIntegration to true. This allows for a more simplistic app architecture but 
+        exposes any user to much higher security risks if any remote connections are established by the app. To avoid this, I use context isolation and IPC messaging 
+        in order to keep my main process and renderer separate. This ensures that what the main process executes is explicitly defined by set messaging topics.
+        </p>
+    </div>
+    <div class="container mx-5 col-md-4">
+        <h6 class="text-left py-2">Event driven app</h6>
+        <p class="row py-2">
+        Whenever an event occurs in the app such as clicking a button or ending the game, an IPC message is triggered to orchestrate navigation. 
+        Instead of having completely different windows for each menu or the game, I simply use objects that act as various pages or areas of the app. 
+        This allows for scalability as well as easier development.
+        </p>
+    </div>
+    <div class="container mx-5 col-md-4">
+        <h6 class="text-left py-2">Mix of CSS and Canvas HTML element</h6>
+        <p class="row py-2">
+        All visual aspects of the game either use CSS or are drawn via Typescript using the Canvas element. CSS allows for easy implementations of various 
+        animations which I leveraged in this project for the menus, buttons, headers, etc. The Canvas element is useful for drawing very complex animations that are common 
+        in games that use spritesheets or particle effects. While my use case was not as complex, I found utilizing the Canvas was a very straight forward way to handle 
+        displaying objects, switching between menus and the game, and handeling window resize events. 
+        </p>
+    </div>
+    <div class="container mx-5 col-md-4">
+        <div class="card text-center bg-transparent text-white mb-3">
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}
