@@ -9,6 +9,7 @@
 	-in project directory run cmd and type: python manage.py startapp [name of new app]
 		-add app name to INSTALLED_APPS list in settings.py
 
+
 3. run server within project
 
 	-in project directory, run cmd and type: python manage.py runserver
@@ -22,4 +23,7 @@
 			-if adding a new field, on first migration include argument null=True otherwise it breaks
 		-python manage.py migrate (essentially a commit command)
 
-5. images must be moved to static file otherwise they disappear eventually.
+
+6. collect static files after updating images, JS, css
+    -python manage.py collectstatic
+
