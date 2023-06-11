@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import Technology, Project, Resume
 import os
-
+import requests
+import json
 
 
 #helper functions
@@ -88,6 +89,25 @@ def embed(response, name):
     return render(response, f'{name}.html', mapping)
 
 
+
+def webhook(request):
+    if request.method == 'POST':
+        data = json.loads(request.body.decode('utf-8'))
+        endpoint_name = data.pop('webhook', None)
+        if not endpoint_name:
+            return JsonResponse({'success': False, 'error': 'webhook variable not found in request body'})
+        endpoint_url = webhooks[endpoint_name]
+        headers = {
+            'Content-type': 'application/json',
+        }
+
+        try:
+            response = requests.post(endpoint_url, data=json.dumps(data), headers=headers)
+            response.raise_for_status()
+
+            return JsonResponse({'success': True})
+        except requests.exceptions.RequestException as e:
+            return JsonResponse({'success': False, 'error': str(e)})
 
 
 

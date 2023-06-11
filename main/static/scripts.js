@@ -15,6 +15,16 @@ function setExpiration(type) {
 
 }
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+    return null;
+}
+
+
 class Cookie {
     constructor (type) {
         this.type = type
@@ -94,15 +104,12 @@ class Cookie {
 class Webhook {
     constructor (data, endpoint){
         this.payload = data
-        this.endpoint = this.build(endpoint)
-        this.send(data, this.endpoint)
+        this.build(endpoint)
+        this.send(data, "/webhooks/")
     }
 
     build (endpoint) {
-        let ep = document.getElementById(endpoint)
-        let url = ep.value
-        ep.remove()
-        return url
+        this.payload.webhook = endpoint
     }
 
     send (data, endpointURL) {
@@ -111,7 +118,21 @@ class Webhook {
   
         request.setRequestHeader('Content-type', 'application/json')
 
-        request.send(JSON.stringify(data))
+        const csrftoken = getCookie('csrftoken');
+
+        request.setRequestHeader('X-CSRFToken', csrftoken);
+    
+        request.onreadystatechange = function () {
+            if (request.readyState === XMLHttpRequest.DONE) {
+                if (request.status === 200) {
+                    console.log('Data forwarded successfully');
+                } else {
+                    console.error('Error forwarding data:', request.status);
+                }
+            }
+        };
+    
+        request.send(JSON.stringify(data));
 
     }
 
@@ -130,7 +151,7 @@ let session = new Cookie('sessionID')
 
 
 let discord = new Webhook(
-    {
+    {   
         username: "Scott's Portfolio Site Traffic",
         content: `______
 
