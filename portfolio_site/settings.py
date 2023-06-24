@@ -132,7 +132,7 @@ USE_TZ = True
 
 
 
-
+CSRF_COOKIE_SECURE = True
 
 
 
