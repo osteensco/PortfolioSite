@@ -1,4 +1,20 @@
 
+
+/////////////////listeners///////////////////
+var cursor = document.querySelector(".cursor");
+
+document.addEventListener('mousemove', (e) => {
+  let x = e.clientX;
+  let y = e.clientY + window.scrollY;
+  cursor.style.left = x + "px";
+  cursor.style.top = y + "px";
+  
+});
+
+
+
+
+
 /////////////////cookies///////////////////
 let types = [
     ['id', 3650],

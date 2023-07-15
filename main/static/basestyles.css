@@ -1,3 +1,36 @@
+
+.container-fluid {
+    background-color: transparent;
+    position: relative;
+    z-index: 2;
+}
+
+.backdrop {
+    background:
+        radial-gradient(circle farthest-side at 0% 50%,#212529 22.5%,#0d6dfd00 0)21px 30px,
+        radial-gradient(circle farthest-side at 0% 50%,#327dc8 24%,#0d6dfd00 0)19px 30px,
+        linear-gradient(#212529 14%,#0d6dfd00 0, #0d6dfd00 85%,#212529 0)0 0,
+        linear-gradient(150deg,#212529 24%,#327dc8 0,#327dc8 26%,#0d6dfd00 0,#0d6dfd00 74%,#327dc8 0,#327dc8 76%,#212529 0)0 0,
+        linear-gradient(30deg,#212529 24%,#327dc8 0,#327dc8 26%,#212529 0,#0d6dfd00 74%,#327dc8 0,#327dc8 76%,#212923 0)0 0,
+        linear-gradient(90deg,#0d6dfd00 2%,#0d6dfd00 0,#0d6dfd00 98%,#327dc8 0%)0 0 #212529;
+    background-size: 40px 60px;
+    position: relative;    
+    overflow: hidden;
+}
+
+.cursor {
+    position: absolute;
+    width: 200vw;
+    height: 200vh;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-image: radial-gradient(circle at center, transparent, #212529 5%);
+    pointer-events: none;
+    z-index: 1;
+
+}
+
 .divider {
     height: 3rem;
     background-color: rgba(0, 0, 0, .1);
@@ -82,3 +115,12 @@
 }
 
 
+.modal-backdrop {
+    display: none;
+    z-index: 1040 !important;
+}
+
+.modal-content {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}

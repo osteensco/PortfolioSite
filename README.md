@@ -11,3 +11,4 @@ Python using the Django framework, hosted on heroku using a postres database ins
 ## Frontend
 
 Bootstrap with some custom CSS mixed in, and vanilla JavaScript.
+
