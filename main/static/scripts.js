@@ -3,12 +3,27 @@
 /////////////////listeners///////////////////
 var cursor = document.querySelector(".cursor");
 
+const spotlight = (e) => {
+    let x, y;
+    
+    if (e.type === 'touchmove') {
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY + window.scrollY;
+    } else {
+        x = e.clientX;
+        y = e.clientY + window.scrollY;
+    }
+    
+    cursor.style.left = x + "px";
+    cursor.style.top = y + "px";
+};
+
 document.addEventListener('mousemove', (e) => {
-  let x = e.clientX;
-  let y = e.clientY + window.scrollY;
-  cursor.style.left = x + "px";
-  cursor.style.top = y + "px";
-  
+    spotlight(e);
+});
+
+document.addEventListener('touchmove', (e) => {
+    spotlight(e);
 });
 
 
