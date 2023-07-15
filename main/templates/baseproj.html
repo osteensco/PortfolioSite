@@ -31,7 +31,7 @@
         <div class="row">
             {% for tech in techs %}
                 <div class="col-sm-12 col-lg-4 mb-4">
-                    <div class="card text-center bg-transparent text-white mb-3">
+                    <div class="card text-center bg-dark text-white mb-3">
                         <a href="{% url 'tech_page' tech.name %}">
                             <img class="card-img-top" src="{{ tech.icon.url }}">
                         </a>
