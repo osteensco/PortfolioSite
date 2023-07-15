@@ -20,12 +20,12 @@
 
 .cursor {
     position: absolute;
-    width: 200vw;
-    height: 200vh;
+    width: 1000vw;
+    height: 1000vh;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    background-image: radial-gradient(circle at center, transparent, #212529 5%);
+    background-image: radial-gradient(circle at center, transparent, #212529 1%);
     pointer-events: none;
     z-index: 1;
 
@@ -64,6 +64,10 @@
     box-shadow: 0 0 60px #0d6dfd9a;
 }
 
+.btn-outline-primary {
+    background-color: #212529;
+}
+
 .nav-link {
     transition: .7s;
 }
@@ -94,7 +98,6 @@
 }
 .alt.btn-outline-primary {
     border-radius: 20px; 
-
     font-weight: bolder;
 }
 
