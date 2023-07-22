@@ -7,6 +7,10 @@ import requests
 import json
 
 
+
+
+
+
 #helper functions
 def set_tech_dict(projects):
     dt = {}
@@ -26,6 +30,10 @@ def set_resume():
     return r
 
 
+
+
+
+# constants
 webhooks = {
     'discord_endpoint': os.environ.get('DISCORD_ENDPOINT'),
     'gcp_endpoint' : os.environ.get('GCP_ENDPOINT')
@@ -37,8 +45,14 @@ resume = {'resume': set_resume()}
 
 defaults =  resume | year
 
+
+
+
+
+
 #view functions
-#more akin to request handlers, these functions provide a response from a request. depends upon hit in urls list.
+
+#eseentially act as request handlers, URLs will map to one of these functions
 def home(response):#provides home page, extended from base. includes all projects and technologies
     projects = Project.objects.order_by('relevance')
     techs = Technology.objects.order_by('relevance')
@@ -89,9 +103,22 @@ def embed(response, name):
 
     return render(response, f'{name}.html', mapping)
 
+def bypass(response):
+    return HttpResponse(response)
 
 
-def webhook(request):
+
+
+
+
+
+
+
+
+
+# APIs
+
+def webhook_API(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
         endpoint_name = data.pop('webhook', None)
@@ -111,8 +138,11 @@ def webhook(request):
             return JsonResponse({'success': False, 'error': str(e)})
 
 
-
-def bypass(response):
-    return HttpResponse(response)
+def pwr_5_teams_API(request):
+    pass
+    # read cloud function endpoint env variable
+    # send request and return response
+    # add to urls.py
+    # use react to render in client
 
 
