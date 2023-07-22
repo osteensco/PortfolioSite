@@ -9,7 +9,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path("favicon.ico", views.bypass),
-    path("webhooks/", views.webhook, name="webhooks"),
+    path("webhooks/", views.webhook_API, name="webhooks"),
     path("", views.home, name="home"),
     path("home", views.home, name="home"),
     path("tech/<str:name>/", views.tech_page, name="tech_page"),
