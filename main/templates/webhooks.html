@@ -26,10 +26,47 @@
         gathering data and sending the Post Request. Whenever a page is loaded, a Webhook object is created for each endpoint and executes their 
         workflows. 
     </p>
-
-
-
-
 </div>
+
+<div class="container" id="RESTAPI" style="height: 10rem"></div>
+
+<div class="container-fluid mt-5">
+    <h4 class="text-center py-2">REST API</h4>
+    <div class="row justify-content-center gx-5 mb-5 my-5">
+        <div class="col w-50 displaybox mx-5">    
+            <div class="row mt-1 mb-1">
+                <div class="col">
+                    <div class="dropdown justify-content-center mb-3">
+                        <select class="form-select bg-dark text-white" id="conferenceSelector">
+                            <option selected>Choose a Conference</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary" id="fetchDataBtn">Fetch Data</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-1 mb-1">
+                <div class="col align-self-center justify-content-center">
+                    <div class="text-center" id="resultContainer"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col w-50 align-self-start justify-content-center gx-5 mb-5">
+            <div class="container-fluid mx-5">
+                <p>
+                    REST APIs are one of the most widley used API designs. To the left I have implemented a simple proof of concept API connection. 
+                    The API is written in python, hosted on a Google Cloud Function, and CI/CD is setup through a Cloud Build trigger.
+                    The data itself is stored in Google Bigquery. The data was originally webscraped and landed in Bigquery as part of my Data Pipeline Project.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 {% endblock %}

@@ -136,7 +136,7 @@ class Webhook {
     constructor (data, endpoint){
         this.payload = data
         this.build(endpoint)
-        this.send(data, "/webhooks/")
+        this.send(data, "/API/webhooks/")
     }
 
     build (endpoint) {
