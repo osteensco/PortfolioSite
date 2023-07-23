@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import Technology, Project, Resume
 from datetime import datetime
-from google.oauth2 import service_account
 import os
 import requests
 import json
@@ -34,18 +33,12 @@ def set_resume():
 
 
 
+
+
 # constants
-GCP_KEY = json.loads(os.environ.get('GOOGLE_CLOUD_KEY'))
-credentials = service_account.Credentials.from_service_account_file(
-    GCP_KEY
-)
-access_token = credentials.refresh(requests.Request()).headers["Authorization"]
-auth_header = {"Authorization": f'''Bearer {access_token}'''}
-
-
 webhooks = {
     'discord_endpoint': os.environ.get('DISCORD_ENDPOINT'),
-    'gcp_endpoint' : os.environ.get('GCP_ENDPOINT')
+    'gcp_endpoint' : os.environ.get('PORTFOLIO_TRAFFIC_ENDPOINT')
 }
 
 APIs = {
@@ -140,8 +133,8 @@ def webhook_API(request):
             return JsonResponse({'success': False, 'error': 'webhook variable not found in request body'})
         endpoint_url = webhooks[endpoint_name]
         headers = {
-            'Content-type': 'application/json',
-        } | auth_header
+            'Content-type': 'application/json'
+        }
 
         try:
             response = requests.post(endpoint_url, data=json.dumps(data), headers=headers)
@@ -163,7 +156,7 @@ def API_call(request):
         endpoint_url = APIs[endpoint_name]
         
         try:
-            response = requests.get(endpoint_url, params=params, headers=auth_header)
+            response = requests.get(endpoint_url, params=params)
             response.raise_for_status()
 
             data = {'response': response.json()}
