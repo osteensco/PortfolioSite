@@ -31,7 +31,7 @@
 <div class="container" id="RESTAPI" style="height: 10rem"></div>
 
 <div class="container-fluid mt-5">
-    <h4 class="text-center py-2">REST API</h4>
+    <h4 class="text-center py-2">Power 5 Schools REST API</h4>
     <div class="row justify-content-center gx-5 mb-5 my-5">
         <div class="col w-50 displaybox mx-5">    
             <div class="row mt-1 mb-1">
@@ -56,11 +56,17 @@
         </div>
         <div class="col w-50 align-self-start justify-content-center gx-5 mb-5">
             <div class="container-fluid mx-5">
-                <p>
-                    REST APIs are one of the most widley used API designs. To the left I have implemented a simple proof of concept API connection. 
-                    The API is written in python, hosted on a Google Cloud Function, and CI/CD is setup through a Cloud Build trigger.
-                    The data itself is stored in Google Bigquery. The data was originally webscraped and landed in Bigquery as part of my Data Pipeline Project.
-                </p>
+                <div class="row">
+                    <p>
+                        REST APIs are one of the most widley used API designs. To the left I have implemented a simple proof of concept API connection. 
+                        The API is written in python, hosted on a Google Cloud Function, and CI/CD is setup through a Cloud Build trigger. 
+                        I also implemented an API on the backend of this website to act as a router and better manage any additional APIs I might add in the future.
+                        The data itself is stored in Google Bigquery. The data was originally webscraped and landed in Bigquery as part of my Data Pipeline Project.
+                    </p>
+                </div>
+                <div class="row">
+                    <img src="{{ RESTAPI_Diagram.url }}" class="img-fluid float-md mb-3 ms-md-3" style="aspect-ratio: 3/2"/>
+                </div>
             </div>
         </div>
     </div>

@@ -40,8 +40,7 @@ webhooks = {
 }
 
 APIs = {
-    'pwr_5_teams': 'https://us-central1-portfolio-project-353016.cloudfunctions.net/pwr_5_teams_API'
-    # 'pwr_5_teams': os.environ.get('PWR_5_TEAMS_ENDPOINT')
+    'pwr_5_teams': os.environ.get('PWR_5_TEAMS_ENDPOINT')
 }
 
 year = {'year': datetime.now().year}
