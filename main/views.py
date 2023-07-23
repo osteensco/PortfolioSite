@@ -39,6 +39,11 @@ webhooks = {
     'gcp_endpoint' : os.environ.get('GCP_ENDPOINT')
 }
 
+APIs = {
+    'pwr_5_teams': 'https://us-central1-portfolio-project-353016.cloudfunctions.net/pwr_5_teams_API'
+    # 'pwr_5_teams': os.environ.get('PWR_5_TEAMS_ENDPOINT')
+}
+
 year = {'year': datetime.now().year}
 
 resume = {'resume': set_resume()}
@@ -60,6 +65,7 @@ def home(response):#provides home page, extended from base. includes all project
 
     #dictionary is used for passing things to html code
     mapping = {
+        'title': 'home',
         'projects': projects,
         'techs': techs,
         'display_techs': display_techs
@@ -138,11 +144,24 @@ def webhook_API(request):
             return JsonResponse({'success': False, 'error': str(e)})
 
 
-def pwr_5_teams_API(request):
-    pass
-    # read cloud function endpoint env variable
-    # send request and return response
-    # add to urls.py
-    # use react to render in client
+def API_call(request):
+    if request.method == 'GET':
+        params =  request.GET.dict()
+        print(params)
+        print('\n\n')
+        endpoint_name = params.pop('API', None)
+        if not endpoint_name:
+            return JsonResponse({'success': False, 'error': 'API variable not found in request body'})
+        endpoint_url = APIs[endpoint_name]
+        
+        try:
+            response = requests.get(endpoint_url, params=params)
+            response.raise_for_status()
+
+            data = {'response': response.json()}
+            return JsonResponse(data)
+        except requests.exceptions.RequestException as e:
+            return JsonResponse({'error': str(e)})
+
 
 
