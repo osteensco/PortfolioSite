@@ -8,7 +8,8 @@
     <h4 class="text-center py-5">Object Oriented Event Driven Data Pipeline Framework with CI/CD</h4>
     <img src="{{ DataPipeline_Diagram.url }}" class="img-fluid col-md-7 float-md-end mb-3 ms-md-3" style="aspect-ratio: 2/1"/>
     <p>
-    This project provides several use cases for a simple scalable library module for developing event driven batch and streaming data pipelines stemming from a variety of sources. 
+    This project is an excercise in creating a custom a solution for obtaining data and storing it in a servable state. 
+    I developed a simple scalable library module for developing event driven batch and streaming data pipelines stemming from a variety of sources. 
     For each data source I use a Google Cloud Function written in python, which is continuously deployed by a google 
     cloud build trigged off of push requests to the Github repo. The code is the same for each GCF, but each data source 
     has it's own object, execution function, and yaml file to define the correct entry point and follow the proper workflow.
@@ -16,19 +17,13 @@
     <p>
     The Cloud Function is executed by a daily Pub/Sub call from Cloud Scheduler, or it is triggered by a HTTP Google Cloud Function 
     Endpoint receiving a push request and publishing a message to the Pub/Sub topic that the Data Source Cloud Function is subscribed to. 
-    When triggered, the Pipeline object executes checks to ensure data is not duplicated and verifies if the DataSource object needs to be ingested or not.
+    Any additional orchestration needed is handled by Workflows and Eventarc. 
     </p>
     <p>
     I keep all datasource and pipeline objects in a utils module to allow for a monorepo architecture. I created a unique child 
     DataSource object for each set of data I am ingesting which are fed through a Pipeline object 
     that handles fetching API keys, scheduling, and general process flow. The DataSource objects 
     are designed to handle the ETL steps required, and land the data into the appropriate tables in Google Bigquery.
-    </p>
-    <p>
-    The pipeline is simple to scale as it will only require a new child DataSource object and yaml file to 
-    be created in order to integrate a new batch ingestion need. A new endpoint along with the DataSource object 
-    and yaml file will also need to be developed for any new streaming pipeline. The utils module could also be utilized within an airflow environment
-    if the amount of pipelines and dependencies grows to a size where the lack of a composing tool causes issue or in an organization where scheduled DAGs are preferred.
     </p>
 </div>
 
