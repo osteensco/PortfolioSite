@@ -162,7 +162,7 @@ def API_call(request):
             data = {'response': response.json()}
             return JsonResponse(data)
         except requests.exceptions.RequestException as e:
-            return JsonResponse({'error': str(e)})
+            return JsonResponse({'error': response.status_code})
 
 
 
