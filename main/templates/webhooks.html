@@ -61,9 +61,9 @@
                         REST APIs are one of the most widley used API designs. I have implemented a simple proof of concept API connection. 
                         The API is written in python, hosted on a Google Cloud Function, and CI/CD is setup through a Cloud Build trigger. 
                         I also added an API on the backend of this website to act as a router and better manage any additional APIs I might add in the future.
-                        The data itself is stored in Google Bigquery. The data was originally webscraped and landed in Bigquery as part of my Data Pipeline Project. 
-                        While the point of this project was just to showcase a simple example, utilizing a RDBMS behind a single endpoint from an API Gateway would 
-                        be a more performative and secure approach.
+                        The data itself was originally webscraped and landed in Bigquery as part of my Data Pipeline Project. NoSQL solutions have lower read latency, so the data is copied
+                        to an AWS dynamoDB table to increase API consumption performance.
+                        While the point of this project was just to showcase a simple example, a point of improvement would be utilizing an API Gateway for better security, organization, and scalability.
                     </p>
                 </div>
                 <div class="row">
