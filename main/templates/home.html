@@ -25,9 +25,34 @@
             </div>
         </div>
     </div>
+    <div class="divider" id="Technologies"></div>
+    <div class="container-md py-5">
+        <h2 class="text-center py-5">Technologies</h2>
+        <div class="row">
+            {% for tech in techs %}
+                <div class="col-sm-4 col-lg-2 mb-4">
+                    <div class="card text-center bg-dark text-white mb-3">
+                        <a href="{% url 'tech_page' tech.name %}">
+                            <img class="card-img-top" src="{{ tech.icon.url }}">
+                        </a>
+                        <div class="row justify-content-evenly align-items-center">
+                            <div class="btn-group-vertical">
+                                <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary active">
+                                {{ tech.name }}
+                                </a>
+                                <a href="{% url 'tech_page' tech.name %}" class="cardbtn btn btn-outline-primary">
+                                    Projects using this {% if tech.type %} {{ tech.type }} {% else %} Technology {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
     <div class="divider" id="Projects"></div>
     <div class="container-md py-5">
-    <h2 class="text-center py-5">Projects</h2>
+        <h2 class="text-center py-5">Projects</h2>
         <div class="row">
             {% for project in projects %}
                 <div class="col-sm-12 col-lg-4 mb-4">
@@ -75,31 +100,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="divider" id="Technologies"></div>
-    <div class="container-md py-5">
-        <h2 class="text-center py-5">Technologies</h2>
-        <div class="row">
-            {% for tech in techs %}
-                <div class="col-sm-12 col-lg-4 mb-4">
-                    <div class="card text-center bg-dark text-white mb-3">
-                        <a href="{% url 'tech_page' tech.name %}">
-                            <img class="card-img-top" src="{{ tech.icon.url }}">
-                        </a>
-                        <div class="row justify-content-evenly align-items-center">
-                            <div class="btn-group-vertical">
-                                <a href="{% url 'tech_page' tech.name %}" class="btn btn-outline-primary active">
-                                {{ tech.name }}
-                                </a>
-                                <a href="{% url 'tech_page' tech.name %}" class="cardbtn btn btn-outline-primary">
-                                    Projects using this {% if tech.type %} {{ tech.type }} {% else %} Technology {% endif %}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+
 
 
 {% endblock %}
