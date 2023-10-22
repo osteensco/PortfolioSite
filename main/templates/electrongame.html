@@ -20,7 +20,7 @@
         <p class="row py-2">
         Whenever an event occurs in the app such as clicking a button or ending the game, an IPC message is triggered to orchestrate navigation. 
         Instead of having completely different windows for each menu or the game, I simply use objects that act as various pages or areas of the app. 
-        This allows for scalability as well as easier development.
+        This organization allows for easier development and feature addition. A simple SQLite database is used to persist data like settings and highscores.
         </p>
     </div>
     <div class="container mx-5 col-md-4">
@@ -34,7 +34,7 @@
     </div>
     <div class="container mx-5 col-md-4">
         <div class="card text-center bg-transparent text-white mb-3">
-            
+            <img src="{{ Electron_Diagram.url }}" class="img-fluid" />
         </div>
     </div>
 </div>
