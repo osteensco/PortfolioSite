@@ -10,10 +10,11 @@
         <h6 class="text-left py-2">Server</h6>
 
         <p>
-        Live connections are established with the front end clients using websockets and the server itself is buil in Go. Websockets handle sending messages 
-        to the server and out to the clients in a given chatroom as well as updating the lobby's room list for clients in the lobby as chatrooms are created in real time. 
-        The server has various go routines for receiving and sending messages, checking chatroom population for a clean up protocol, and making API requests. 
-        There is also logic for maintaining state across multiple server instances.
+        Live connections are established with the frontend clients using websockets and the server itself is written in Go. Websockets are used to send messages 
+        to the server which forwards these messages out to each of the clients in a given chatroom. Additionally, websockets are used to update the lobby's room list for clients
+        in the lobby as chatrooms are created in real time. The server has various go routines for sending and receiving messages, checking chatroom population 
+        for executing a clean up protocol, and making API requests. There is also logic for maintaining state across multiple server instances and ensuring accuracy between the 
+        database and cache layer.
         </p>
     </div>
 
@@ -21,9 +22,9 @@
         <h6 class="text-left py-2">Cache and Data Persistance </h6>
         <p>
         For data persistence, I utilize a CockroachDB cloud instance for the database and a Redis cloud project as a cache layer. For GET requests, the API will first 
-        try to read from the cache and fallback to the database. The REDIS key will then be added if it wasn't already in the cache. For POST, PUT, and DELETE requests, 
-        the API will first write to the database. If this is successful, a check is executed on the existance of a corresponding Redis key. If applicaple, the operation will also be performed on the REDIS key. 
-        This way, the cache stays up to date with the database.
+        try to read from the cache and then fallback to the database if the cache misses. The REDIS key will then be added if it wasn't already in the cache. For POST, 
+        PUT, and DELETE requests, the API will first write to the database. If this is successful, a check is executed on the existance of a corresponding Redis key and 
+        if applicaple, the operation will also be performed on the REDIS key. This way, the cache stays up to date with the database.
         </p>
     </div>
 </div>
